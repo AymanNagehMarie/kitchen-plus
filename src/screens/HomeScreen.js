@@ -8,20 +8,20 @@ const HomeScreen = ({ navigation }) => {
       <Text style={{ fontSize: 48 }}>HomeScreen</Text>
       <Button
         title="Guest Flow"
-        onPress={() => navigation.navigate("guestFlow")}
+        onPress={() => navigation.navigate("products")}
       ></Button>
 
       <Button
         title="Client Flow"
-        onPress={() => navigation.navigate("clientFlow")}
+        onPress={() => navigation.navigate("products")}
       ></Button>
       <Button
         title="Delivery Flow"
-        onPress={() => navigation.navigate("deliveryFlow")}
+        onPress={() => navigation.navigate("orders")}
       ></Button>
       <Button
         title="Sales Flow"
-        onPress={() => navigation.navigate("salesFlow")}
+        onPress={() => navigation.navigate("sales")}
       ></Button>
     </View>
   );
