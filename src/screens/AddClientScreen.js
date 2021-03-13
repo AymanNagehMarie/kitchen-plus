@@ -1,17 +1,41 @@
-import React from "react";
-import { View, StyleSheet, Text } from "react-native";
-import Header from "../components/Header";
-let nav;
+// Dynamically Set Drawer/Sidebar Options in React Navigation Drawer
+// https://aboutreact.com/dynamically-change-sidebar-options/
+
+import * as React from "react";
+import { Button, View, Text, SafeAreaView } from "react-native";
 
 const AddClientScreen = ({ navigation }) => {
-  nav = navigation;
-  return <Text style={{ fontSize: 48 }}>AddClientScreen</Text>;
-};
-
-const styles = StyleSheet.create({});
-
-AddClientScreen.navigationOptions = {
-  headerTitle: () => <Header title="Add Client" navigation={nav} />,
+  return (
+    <SafeAreaView style={{ flex: 1 }}>
+      <View style={{ flex: 1, padding: 16 }}>
+        <View
+          style={{
+            flex: 1,
+            alignItems: "center",
+            justifyContent: "center",
+          }}
+        >
+          <Text
+            style={{
+              fontSize: 18,
+              textAlign: "center",
+              marginBottom: 16,
+            }}
+          >
+            Dynamically Set Drawer/Sidebar Options in React Navigation Drawer
+            {"\n\n"}
+            Add Client Screen
+          </Text>
+        </View>
+        <Text style={{ fontSize: 18, textAlign: "center", color: "grey" }}>
+          Dynamically Set Drawer/Sidebar Options
+        </Text>
+        <Text style={{ fontSize: 16, textAlign: "center", color: "grey" }}>
+          www.aboutreact.com
+        </Text>
+      </View>
+    </SafeAreaView>
+  );
 };
 
 export default AddClientScreen;

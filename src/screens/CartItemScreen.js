@@ -1,17 +1,41 @@
-import React from "react";
-import { View, StyleSheet, Text } from "react-native";
-import Header from "../components/Header";
-let nav;
+// Dynamically Set Drawer/Sidebar Options in React Navigation Drawer
+// https://aboutreact.com/dynamically-change-sidebar-options/
+
+import * as React from "react";
+import { Button, View, Text, SafeAreaView } from "react-native";
 
 const CartItemScreen = ({ navigation }) => {
-  nav = navigation;
-  return <Text style={{ fontSize: 48 }}>CartItemScreen</Text>;
-};
-
-const styles = StyleSheet.create({});
-
-CartItemScreen.navigationOptions = {
-  headerTitle: () => <Header title="Cart Item" navigation={nav} />,
+  return (
+    <SafeAreaView style={{ flex: 1 }}>
+      <View style={{ flex: 1, padding: 16 }}>
+        <View
+          style={{
+            flex: 1,
+            alignItems: "center",
+            justifyContent: "center",
+          }}
+        >
+          <Text
+            style={{
+              fontSize: 18,
+              textAlign: "center",
+              marginBottom: 16,
+            }}
+          >
+            Dynamically Set Drawer/Sidebar Options in React Navigation Drawer
+            {"\n\n"}
+            CartItemScreen
+          </Text>
+        </View>
+        <Text style={{ fontSize: 18, textAlign: "center", color: "grey" }}>
+          Dynamically Set Drawer/Sidebar Options
+        </Text>
+        <Text style={{ fontSize: 16, textAlign: "center", color: "grey" }}>
+          www.aboutreact.com
+        </Text>
+      </View>
+    </SafeAreaView>
+  );
 };
 
 export default CartItemScreen;
