@@ -55,7 +55,7 @@ const ProductScreen = ({ navigation, route }) => {
 
 const styles = StyleSheet.create({});
 
-ProductScreen.navigationOptions = {
-  headerTitle: () => <Header title="Products" navigation={nav} />,
-};
+// ProductScreen.navigationOptions = {
+//   headerTitle: () => <Header title="Products" navigation={nav} />,
+// };
 export default ProductScreen;
