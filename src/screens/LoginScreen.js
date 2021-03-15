@@ -1,5 +1,10 @@
 import React, { useState } from "react";
-
+import {
+  Ionicons,
+  Entypo,
+  AntDesign,
+  MaterialCommunityIcons,
+} from "@expo/vector-icons";
 import {
   View,
   StyleSheet,
@@ -11,13 +16,21 @@ import {
 import Header from "../components/Header";
 import Spacer from "../components/Spacer";
 import { Text, Input, ThemeProvider, colors } from "react-native-elements";
+import Icon from "react-native-vector-icons/FontAwesome";
 
 const LoginScreen = ({ errorMessage, onSubmit, navigation }) => {
   const [email, setEmail] = useState("");
+  const isValidEmail = email == "";
+  const errorMessageEmail = isValidEmail ? "Your email is required." : "";
+
   const [password, setPassword] = useState("");
+  const isValidPassword = password == "";
+  const errorMessagePassword = isValidPassword
+    ? "Your password is required."
+    : "";
 
   return (
-    <SafeAreaView style={{ flex: 1 }}>
+    <SafeAreaView style={{ flex: 1, backgroundColor: "white" }}>
       <View style={styles.container}>
         <Input
           label="Email"
@@ -25,6 +38,15 @@ const LoginScreen = ({ errorMessage, onSubmit, navigation }) => {
           onChangeText={setEmail}
           autoCapitalize="none"
           autoCorrect={false}
+          placeholder="Email"
+          style={styles.InputStyle}
+          placeholderTextColor="green"
+          errorStyle={{ color: "red", fontSize: 18 }}
+          // errorMessage={errorMessageEmail}
+          leftIcon={
+            <MaterialCommunityIcons name="email" size={24} color="green" />
+          }
+          textContentType="emailAddress"
         />
         <Spacer />
         <Input
@@ -34,13 +56,24 @@ const LoginScreen = ({ errorMessage, onSubmit, navigation }) => {
           onChangeText={setPassword}
           autoCapitalize="none"
           autoCorrect={false}
+          placeholder="Password"
+          style={styles.InputStyle}
+          placeholderTextColor="green"
+          errorStyle={{ color: "red", fontSize: 18 }}
+          // errorMessage={errorMessageEmail}
+          leftIcon={{ type: "font-awesome", name: "lock", color: "green" }}
+          textContentType="password"
         />
+        <Spacer />
+
         <View
-          style={{
-            justifyContent: "center",
-            alignItems: "center",
-            flexDirection: "row",
-          }}
+          style={
+            {
+              // justifyContent: "center",
+              // alignItems: "center",
+              // flexDirection: "row",
+            }
+          }
         >
           <TouchableOpacity
             style={styles.loginScreenButton}
@@ -50,11 +83,13 @@ const LoginScreen = ({ errorMessage, onSubmit, navigation }) => {
             <Text style={styles.loginText}>Login</Text>
           </TouchableOpacity>
           <TouchableOpacity
-            style={styles.cancelScreen}
             onPress={() => navigation.navigate("SubscribeScreen")}
             underlayColor="red"
           >
-            <Text style={styles.loginText}>Subscribe</Text>
+            <Text style={styles.subscribeText}>
+              <Text style={styles.labelText}>Don't have account ? </Text>
+              Subscribe Now
+            </Text>
           </TouchableOpacity>
         </View>
       </View>
@@ -68,9 +103,23 @@ const styles = StyleSheet.create({
   container: {
     flex: 1,
     justifyContent: "center",
-    marginBottom: 250,
+    marginBottom: 150,
   },
+  InputStyle: {
+    fontSize: 14,
+    fontWeight: "500",
+    padding: 8,
 
+    borderWidth: 0,
+    backgroundColor: "#FBFBFB",
+    borderBottomColor: "transparent",
+    borderTopColor: "transparent",
+    borderTopWidth: 0, //works
+    borderBottomWidth: 0, //works,
+    alignItems: "flex-start",
+    flexDirection: "row",
+    color: "green",
+  },
   loginScreenButton: {
     marginRight: 40,
     marginLeft: 40,
@@ -88,16 +137,23 @@ const styles = StyleSheet.create({
     paddingLeft: 10,
     paddingRight: 10,
   },
-  cancelScreen: {
+  subscribeScreen: {
     marginRight: 40,
     marginLeft: 40,
     marginTop: 10,
     paddingTop: 10,
     paddingBottom: 10,
-    backgroundColor: "red",
-    borderRadius: 10,
-    borderWidth: 1,
-    borderColor: "#fff",
+  },
+  subscribeText: {
+    marginTop: 20,
+    color: "#1E6738",
+    textAlign: "center",
+    fontWeight: "bold",
+  },
+  labelText: {
+    color: "black",
+    fontSize: 15,
+    textDecorationLine: "underline",
   },
 });
 
