@@ -47,6 +47,7 @@ import SalesOrderHistoryScreen from "./src/screens/SalesOrderHistoryScreen";
 import SubscribeScreen from "./src/screens/SubscribeScreen";
 import HomeScreen from "./src/screens/HomeScreen";
 import Header from "./src/components/Header";
+import { withTheme } from "react-native-elements";
 
 const Stack = createStackNavigator();
 const Drawer = createDrawerNavigator();
@@ -86,8 +87,63 @@ const productScreenStack = ({ navigation, route }) => {
           headerLeft: () => (
             <NavigationDrawerStructure navigationProps={navigation} />
           ),
+          headerRight: () => (
+            <View style={{flexDirection: 'row',margin:5}}   
+             underlayColor="#fff"
+         >
+              <View style={{position:"absolute",zIndex:2}}>
+
+<TouchableOpacity
+    style={{
+      width: 15,
+      height:15,
+      alignItems: 'center',
+      opacity:1,
+      shadowOpacity:"red",
+      backgroundColor:"white",
+      justifyContent: 'center',
+      borderTopLeftRadius: 25,
+      borderBottomLeftRadius: 25,
+      borderTopRightRadius: 25,
+      borderBottomRightRadius: 25
+  }}
+      
+        underlayColor="#fff"
+    >
+      
+<TouchableOpacity
+    style={{
+      width: 12,
+      height:12,
+      alignItems: 'center',
+      opacity:1,
+      shadowOpacity:"red",
+      backgroundColor:"red",
+      justifyContent: 'center',
+      borderTopLeftRadius: 25,
+      borderBottomLeftRadius: 25,
+      borderTopRightRadius: 25,
+      borderBottomRightRadius: 25
+  }}
+     
+        underlayColor="#fff"
+    >
+</TouchableOpacity>
+
+    </TouchableOpacity >
+              </View>
+              <AntDesign name="shoppingcart" size={30} color="white"  onPress={() => {
+              navigation.navigate("CartItemScreen");
+             }}/>
+              
+          </View>
+          
+          ),
+
           headerStyle: {
-            backgroundColor: "#f4511e", //Set Header color
+           // backgroundColor: "#f4511e", //Set Header color
+            backgroundColor: "#7bb719", //Set Header color
+
           },
           headerTintColor: "#fff", //Set Header text color
           headerTitleStyle: {
