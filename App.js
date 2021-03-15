@@ -49,6 +49,7 @@ import SubscribeScreen from "./src/screens/SubscribeScreen";
 import HomeScreen from "./src/screens/HomeScreen";
 import Header from "./src/components/Header";
 import { withTheme } from "react-native-elements";
+import { Foundation } from '@expo/vector-icons'; 
 
 const Stack = createStackNavigator();
 const Drawer = createDrawerNavigator();
@@ -61,18 +62,19 @@ const NavigationDrawerStructure = (props) => {
   };
 
   return (
-    <View style={{ flexDirection: "row" }}>
+    <View style={{ marginHorizontal:10,flexDirection: "row" }}>
       <TouchableOpacity onPress={toggleDrawer}>
         {/*Donute Button Image */}
-        <Image
+        <Foundation name="list" size={30} color={Theme.COLORS.MAJOR} />
+        {/* <Image
         backgroundColor={Theme.COLORS.MAJOR}
        // color={Theme.COLORS.MAJOR}
           source={{
             uri:
               "https://raw.githubusercontent.com/AboutReact/sampleresource/master/drawerWhite.png",
           }}
-          style={{color:"red", width: 25, height: 25, marginLeft: 5 }}
-        />
+          style={{width: 25, height: 25, marginLeft: 5 }}
+        /> */}
       </TouchableOpacity>
     </View>
   );
@@ -453,7 +455,7 @@ const drawerStack = ({ route }) => {
   return (
     <Drawer.Navigator
       drawerContentOptions={{
-        activeTintColor: "#e91e63",
+        activeTintColor: "#7bb719",
       }}
       drawerContent={(props) => {
         return (

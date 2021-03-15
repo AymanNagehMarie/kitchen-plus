@@ -4,132 +4,78 @@ import { Colors } from "react-native/Libraries/NewAppScreen";
 import { View, StyleSheet, Text,Image,TouchableOpacity, Button } from "react-native";
 import { RecipeCard } from '../AppStyles';
 import React, { useState } from "react";
+import Theme from "../../src/constants/Theme"
 
 const CellItem = (props) => {  
   console.log(props);
   const [counter, setCounter] = useState(1);
 const [flag, setFlag] = useState(true);
-
-  const [showSpinner, setSpinner] = useState();
   const [dynamicView, setDynamicView] = useState(<TouchableOpacity
   
-    style={{
-      flex:1,
-      height:30,
-      backgroundColor: "#f4511e",
-      alignItems: 'center',
-      justifyContent: 'center',
-      borderTopLeftRadius: 25,
-      borderBottomLeftRadius: 25,
-      borderTopRightRadius: 25,
-      borderBottomRightRadius: 25
-  }}
+    style={styles.btnCartItemMinor}
          onPress={() => {
           setFlag(false);
-        //  removeFromCart();
-          // <View style={styles.spContainer}>
-          // <TouchableOpacity
-          //   style={{
-          //     width: 30,
-          //     height:30,
-          //     backgroundColor: "#f4511e",
-          //     alignItems: 'center',
-          //     justifyContent: 'center',
-          //     borderTopLeftRadius: 25,
-          //     borderBottomLeftRadius: 25
-          // }}
-          //        onPress={() => {
-          //         console.log(counter);
-          //         if (counter % 2 == 0) {
-          //           setCounter(counter / 2);
-          //         }
-          //         props.onDecrease();
-          //       }}
-          //       underlayColor="#fff"
-          //   >
-      
-          //   <Text >-</Text>
-          //   </TouchableOpacity >
-          //   <Text style={{flex:1,textAlign:"center",fontSize:25}}>{counter}</Text>
-          //   <TouchableOpacity
-          //     style={{
-          //       width: 30,
-          //       height:30,
-          //       backgroundColor: "#f4511e",
-          //       alignItems: 'center',
-          //       justifyContent: 'center',
-          //       borderTopRightRadius: 25,
-          //       borderBottomRightRadius: 25
-          //   }}
-          //     onPress={() => {
-          
-          //       setCounter(counter * 2);
-          //       props.onIncrease();
-          //     }}
-          //     underlayColor="#fff"
-          //   >
-          //     <Text >+</Text>
-          //   </TouchableOpacity>
-          //   </View>
 }}
         underlayColor="#fff"
     >
 
-    <Text style={styles.btnText}>Add To Cart</Text>
+    <Text style={styles.btnTextMinor}>Add To Cart</Text>
     </TouchableOpacity >);
-    const addToCart=()=>{
-setDynamicView(<TouchableOpacity
+//     const addToCart=()=>{
+// setDynamicView(<TouchableOpacity
   
-  style={{
-    flex:1,
-    height:30,
-    backgroundColor: "#f4511e",
-    alignItems: 'center',
-    justifyContent: 'center',
-    borderTopLeftRadius: 25,
-    borderBottomLeftRadius: 25,
-    borderTopRightRadius: 25,
-    borderBottomRightRadius: 25
-}}
-       onPress={() => {
-        removeFromCart();
-}}
-      underlayColor="#fff"
-  >
+//   style={{
+//     flex:1,
+//     height:30,
+//     backgroundColor: Theme.COLORS.MAJOR,
+//     alignItems: 'center',
+//     justifyContent: 'center',
+//     borderTopLeftRadius: 25,
+//     borderBottomLeftRadius: 25,
+//     borderTopRightRadius: 25,
+//     borderBottomRightRadius: 25
+// }}
+//        onPress={() => {
+//         removeFromCart();
+// }}
+//       underlayColor="#fff"
+//   >
 
-  <Text style={styles.btnText}>Add To Cart</Text>
-  </TouchableOpacity >)
-    }
-    const removeFromCart=()=>{
-            setDynamicView(<TouchableOpacity
+//   <Text style={styles.btnText}>Add To Cart</Text>
+//   </TouchableOpacity >)
+//     }
+//     const removeFromCart=()=>{
+//             setDynamicView(<TouchableOpacity
   
-              style={{
-                flex:1,
-                height:30,
-                backgroundColor: "#f4511e",
-                alignItems: 'center',
-                justifyContent: 'center',
-                borderTopLeftRadius: 25,
-                borderBottomLeftRadius: 25,
-                borderTopRightRadius: 25,
-                borderBottomRightRadius: 25
-            }}
-                   onPress={() => {
-                    addToCart();
-                  }}
-                  underlayColor="#fff"
-              >
+//               style={{
+//                 flex:1,
+//                 height:30,
+//                 backgroundColor: Theme.COLORS.MAJOR,
+//                 alignItems: 'center',
+//                 justifyContent: 'center',
+//                 borderTopLeftRadius: 25,
+//                 borderBottomLeftRadius: 25,
+//                 borderTopRightRadius: 25,
+//                 borderBottomRightRadius: 25
+//             }}
+//                    onPress={() => {
+//                     addToCart();
+//                   }}
+//                   underlayColor="#fff"
+//               >
             
-            <Text >Remove To Cart</Text>
-            </TouchableOpacity >)
+//             <Text >Remove To Cart</Text>
+//             </TouchableOpacity >)
       
-    }
+//     }
     const spinner=(<View style={styles.spContainer}>
   <TouchableOpacity
     style={{
       width: 30,
       height:30,
-      backgroundColor: "#f4511e",
+      //backgroundColor: Theme.COLORS.MAJOR,
+      borderColor: Theme.COLORS.MAJOR,
+      borderWidth:1,
       alignItems: 'center',
       justifyContent: 'center',
       borderTopLeftRadius: 25,
@@ -147,14 +93,20 @@ setDynamicView(<TouchableOpacity
         underlayColor="#fff"
     >
 
-    <Text style={styles.btnText} >-</Text>
+    <Text style={styles.textPlusMinor
+    } >-</Text>
     </TouchableOpacity >
-    <Text style={{flex:1,textAlign:"center",fontSize:25}}>{counter}</Text>
+
+ 
+    <Text style={{flex:1,textAlign:"center",textAlignVertical:"center",fontSize:18, borderColor:Theme.COLORS.MAJOR,
+  borderWidth:1,marginHorizontal:3}}>{counter}</Text>
     <TouchableOpacity
       style={{
         width: 30,
         height:30,
-        backgroundColor: "#f4511e",
+       // backgroundColor: Theme.COLORS.MAJOR,
+        borderColor: Theme.COLORS.MAJOR,
+        borderWidth:1,
         alignItems: 'center',
         justifyContent: 'center',
         borderTopRightRadius: 25,
@@ -167,7 +119,11 @@ setDynamicView(<TouchableOpacity
       }}
       underlayColor="#fff"
     >
-      <Text style={styles.btnText}>+</Text>
+      <Text style={styles.textPlusMinor
+      
+      
+      
+      }>+</Text>
     </TouchableOpacity>
     </View>)
   return (
@@ -176,7 +132,7 @@ setDynamicView(<TouchableOpacity
 
 <View   style={styles.container}>
      
-      <Image style={RecipeCard.photo} source={{ uri: props.photo_url }} />
+      <Image style={RecipeCard.photo}  source={{ uri: props.photo_url }} />
       <View style={{flexDirection:"row"}}>
       <Text  numberOfLines={1} style={styles.titleText}>{props.title}</Text>
       </View>
@@ -188,56 +144,7 @@ setDynamicView(<TouchableOpacity
       <Text style={styles.text}>unit : </Text>
       <Text style={styles.text}>{props.unit}</Text>
       </View>
-      {/* setDynamicView(null); */}
      {flag? (dynamicView):spinner}
-     
-      
-{/* {showSpinner} */}
-{/*      
-<View style={styles.spContainer}>
-          <TouchableOpacity
-            style={{
-              width: 30,
-              height:30,
-              backgroundColor: "#f4511e",
-              alignItems: 'center',
-              justifyContent: 'center',
-              borderTopLeftRadius: 25,
-              borderBottomLeftRadius: 25
-          }}
-                 onPress={() => {
-                  console.log(counter);
-                  if (counter % 2 == 0) {
-                    setCounter(counter / 2);
-                  }
-                  props.onDecrease();
-                }}
-                underlayColor="#fff"
-            >
-      
-            <Text >-</Text>
-            </TouchableOpacity >
-            <Text style={{flex:1,textAlign:"center",fontSize:25}}>{counter}</Text>
-            <TouchableOpacity
-              style={{
-                width: 30,
-                height:30,
-                backgroundColor: "#f4511e",
-                alignItems: 'center',
-                justifyContent: 'center',
-                borderTopRightRadius: 25,
-                borderBottomRightRadius: 25
-            }}
-              onPress={() => {
-          
-                setCounter(counter * 2);
-                props.onIncrease();
-              }}
-              underlayColor="#fff"
-            >
-              <Text >+</Text>
-            </TouchableOpacity>
-            </View> */}
         <View style={styles.spContainer}>
 </View>
     </View>
@@ -282,16 +189,43 @@ borderRadius:10,
   alignContent:"space-between",
   justifyContent: "center",
 }, 
-
-
 titleText:{
   alignSelf:"stretch",
   width:130
 },
-btnText:{
-
+textPlus:{
   color:"white",
    fontSize:20
-},
+},textPlusMinor:{
+  color:Theme.COLORS.BLACK,
+   fontSize:18
+},btnCartItem:{
+  flex:1,
+  height:30,
+  backgroundColor: Theme.COLORS.MAJOR,
+  alignItems: 'center',
+  justifyContent: 'center',
+  borderTopLeftRadius: 25,
+  borderBottomLeftRadius: 25,
+  borderTopRightRadius: 25,
+  borderBottomRightRadius: 25
+},btnCartItemMinor:{
+  flex:1,
+  height:30,
+  borderWidth:2,
+  borderColor: Theme.COLORS.MAJOR,
+  alignItems: 'center',
+  justifyContent: 'center',
+  borderTopLeftRadius: 25,
+  borderBottomLeftRadius: 25,
+  borderTopRightRadius: 25,
+  borderBottomRightRadius: 25
+},btnTextMinor:{
+  color:Theme.COLORS.BLACK,
+   fontSize:12
+},box:{
+  borderWidth:1,
+  borderColor:"red"
+}
 });
 export default CellItem;
