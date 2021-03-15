@@ -20,6 +20,7 @@
 //   },
 // });
 import "react-native-gesture-handler";
+import Theme from "./src/constants/Theme"
 import * as React from "react";
 import { View, TouchableOpacity, Image, Text } from "react-native";
 import { NavigationContainer } from "@react-navigation/native";
@@ -64,11 +65,13 @@ const NavigationDrawerStructure = (props) => {
       <TouchableOpacity onPress={toggleDrawer}>
         {/*Donute Button Image */}
         <Image
+        backgroundColor={Theme.COLORS.MAJOR}
+       // color={Theme.COLORS.MAJOR}
           source={{
             uri:
               "https://raw.githubusercontent.com/AboutReact/sampleresource/master/drawerWhite.png",
           }}
-          style={{ width: 25, height: 25, marginLeft: 5 }}
+          style={{color:"red", width: 25, height: 25, marginLeft: 5 }}
         />
       </TouchableOpacity>
     </View>
@@ -132,7 +135,7 @@ const productScreenStack = ({ navigation, route }) => {
 
     </TouchableOpacity >
               </View>
-              <AntDesign name="shoppingcart" size={30} color="white"  onPress={() => {
+              <AntDesign name="shoppingcart" size={30} color={Theme.COLORS.MAJOR}  onPress={() => {
               navigation.navigate("CartItemScreen");
              }}/>
               
@@ -142,10 +145,10 @@ const productScreenStack = ({ navigation, route }) => {
 
           headerStyle: {
            // backgroundColor: "#f4511e", //Set Header color
-            backgroundColor: "#7bb719", //Set Header color
-
+            backgroundColor: Theme.COLORS.HEADER, //Set Header color
+       
           },
-          headerTintColor: "#fff", //Set Header text color
+          headerTintColor: Theme.COLORS.MAJOR, //Set Header text color
           headerTitleStyle: {
             fontWeight: "bold", //Set Header text style
           },
@@ -164,9 +167,10 @@ const cartItemScreenStack = ({ navigation }) => {
           <NavigationDrawerStructure navigationProps={navigation} />
         ),
         headerStyle: {
-          backgroundColor: "#f4511e", //Set Header color
+       
+          backgroundColor: Theme.COLORS.HEADER, //Set Header color
         },
-        headerTintColor: "#fff", //Set Header text color
+        headerTintColor: Theme.COLORS.MAJOR, //Set Header text color
         headerTitleStyle: {
           fontWeight: "bold", //Set Header text style
         },
@@ -191,12 +195,14 @@ const salesOrderHistoryScreenStack = ({ navigation }) => {
           <NavigationDrawerStructure navigationProps={navigation} />
         ),
         headerStyle: {
-          backgroundColor: "#f4511e", //Set Header color
-        },
-        headerTintColor: "#fff", //Set Header text color
-        headerTitleStyle: {
-          fontWeight: "bold", //Set Header text style
-        },
+          // backgroundColor: "#f4511e", //Set Header color
+           backgroundColor: Theme.COLORS.HEADER, //Set Header color
+      
+         },
+         headerTintColor: Theme.COLORS.MAJOR, //Set Header text color
+         headerTitleStyle: {
+           fontWeight: "bold", //Set Header text style
+         },
       }}
     >
       <Stack.Screen
@@ -218,12 +224,14 @@ const deliveryListScreenStack = ({ navigation }) => {
           <NavigationDrawerStructure navigationProps={navigation} />
         ),
         headerStyle: {
-          backgroundColor: "#f4511e", //Set Header color
-        },
-        headerTintColor: "#fff", //Set Header text color
-        headerTitleStyle: {
-          fontWeight: "bold", //Set Header text style
-        },
+          // backgroundColor: "#f4511e", //Set Header color
+           backgroundColor: Theme.COLORS.HEADER, //Set Header color
+      
+         },
+         headerTintColor: Theme.COLORS.MAJOR, //Set Header text color
+         headerTitleStyle: {
+           fontWeight: "bold", //Set Header text style
+         },
       }}
     >
       <Stack.Screen
@@ -245,12 +253,14 @@ const deliveryOrderDetailStack = ({ navigation }) => {
         //   <NavigationDrawerStructure navigationProps={navigation} />
         // ),
         headerStyle: {
-          backgroundColor: "#f4511e", //Set Header color
-        },
-        headerTintColor: "#fff", //Set Header text color
-        headerTitleStyle: {
-          fontWeight: "bold", //Set Header text style
-        },
+          // backgroundColor: "#f4511e", //Set Header color
+           backgroundColor: Theme.COLORS.HEADER, //Set Header color
+      
+         },
+         headerTintColor: Theme.COLORS.MAJOR, //Set Header text color
+         headerTitleStyle: {
+           fontWeight: "bold", //Set Header text style
+         },
       }}
     >
       <Stack.Screen
@@ -272,12 +282,14 @@ const addClientScreenStack = ({ navigation }) => {
           <NavigationDrawerStructure navigationProps={navigation} />
         ),
         headerStyle: {
-          backgroundColor: "#f4511e", //Set Header color
-        },
-        headerTintColor: "#fff", //Set Header text color
-        headerTitleStyle: {
-          fontWeight: "bold", //Set Header text style
-        },
+          // backgroundColor: "#f4511e", //Set Header color
+           backgroundColor: Theme.COLORS.HEADER, //Set Header color
+      
+         },
+         headerTintColor: Theme.COLORS.MAJOR, //Set Header text color
+         headerTitleStyle: {
+           fontWeight: "bold", //Set Header text style
+         },
       }}
     >
       <Stack.Screen
@@ -299,12 +311,14 @@ const loginScreenStack = ({ navigation }) => {
         //   <NavigationDrawerStructure navigationProps={navigation} />
         // ),
         headerStyle: {
-          backgroundColor: "#f4511e", //Set Header color
-        },
-        headerTintColor: "#fff", //Set Header text color
-        headerTitleStyle: {
-          fontWeight: "bold", //Set Header text style
-        },
+          // backgroundColor: "#f4511e", //Set Header color
+           backgroundColor: Theme.COLORS.HEADER, //Set Header color
+      
+         },
+         headerTintColor: Theme.COLORS.MAJOR, //Set Header text color
+         headerTitleStyle: {
+           fontWeight: "bold", //Set Header text style
+         },
       }}
     >
       <Stack.Screen
@@ -326,12 +340,14 @@ const subscribeScreenStack = ({ navigation }) => {
         //   <NavigationDrawerStructure navigationProps={navigation} />
         // ),
         headerStyle: {
-          backgroundColor: "#f4511e", //Set Header color
-        },
-        headerTintColor: "#fff", //Set Header text color
-        headerTitleStyle: {
-          fontWeight: "bold", //Set Header text style
-        },
+          // backgroundColor: "#f4511e", //Set Header color
+           backgroundColor: Theme.COLORS.HEADER, //Set Header color
+      
+         },
+         headerTintColor: Theme.COLORS.MAJOR, //Set Header text color
+         headerTitleStyle: {
+           fontWeight: "bold", //Set Header text style
+         },
       }}
     >
       <Stack.Screen
@@ -353,12 +369,14 @@ const orderDetailScreenStack = ({ navigation }) => {
         //   <NavigationDrawerStructure navigationProps={navigation} />
         // ),
         headerStyle: {
-          backgroundColor: "#f4511e", //Set Header color
-        },
-        headerTintColor: "#fff", //Set Header text color
-        headerTitleStyle: {
-          fontWeight: "bold", //Set Header text style
-        },
+          // backgroundColor: "#f4511e", //Set Header color
+           backgroundColor: Theme.COLORS.HEADER, //Set Header color
+      
+         },
+         headerTintColor: Theme.COLORS.MAJOR, //Set Header text color
+         headerTitleStyle: {
+           fontWeight: "bold", //Set Header text style
+         },
       }}
     >
       <Stack.Screen
@@ -380,12 +398,14 @@ const profileScreenStack = ({ navigation }) => {
           <NavigationDrawerStructure navigationProps={navigation} />
         ),
         headerStyle: {
-          backgroundColor: "#f4511e", //Set Header color
-        },
-        headerTintColor: "#fff", //Set Header text color
-        headerTitleStyle: {
-          fontWeight: "bold", //Set Header text style
-        },
+          // backgroundColor: "#f4511e", //Set Header color
+           backgroundColor: Theme.COLORS.HEADER, //Set Header color
+      
+         },
+         headerTintColor: Theme.COLORS.MAJOR, //Set Header text color
+         headerTitleStyle: {
+           fontWeight: "bold", //Set Header text style
+         },
       }}
     >
       <Stack.Screen
@@ -403,15 +423,17 @@ const orderHistoryScreenStack = ({ navigation }) => {
     <Stack.Navigator
       screenOptions={{
         headerLeft: () => (
-          <NavigationDrawerStructure navigationProps={navigation} />
+          <NavigationDrawerStructure backgroundColor={Theme.COLORS.HEADER} navigationProps={navigation} />
         ),
         headerStyle: {
-          backgroundColor: "#f4511e", //Set Header color
-        },
-        headerTintColor: "#fff", //Set Header text color
-        headerTitleStyle: {
-          fontWeight: "bold", //Set Header text style
-        },
+          // backgroundColor: "#f4511e", //Set Header color
+           backgroundColor: Theme.COLORS.HEADER, //Set Header color
+      
+         },
+         headerTintColor: Theme.COLORS.MAJOR, //Set Header text color
+         headerTitleStyle: {
+           fontWeight: "bold", //Set Header text style
+         },
       }}
     >
       <Stack.Screen

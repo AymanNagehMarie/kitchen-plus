@@ -1,5 +1,8 @@
 export default {
   COLORS: {
+    HEADER:"#fff",
+    MAJOR:"#7bb719",
+
     DEFAULT: "#172B4D",
     PRIMARY: "#5E72E4",
     SECONDARY: "#F7FAFC",
@@ -24,7 +27,7 @@ export default {
     BORDER_COLOR: "#E7E7E7",
     BLOCK: "#E7E7E7",
     ICON: "#172B4D",
-    HEADER: "#525F7F",
+    //HEADER: "#525F7F",
     BORDER: "#CAD1D7",
     WHITE: "#FFFFFF",
     BLACK: "#000000",
