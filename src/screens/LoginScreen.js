@@ -12,6 +12,10 @@ import {
   Button,
   TouchableOpacity,
   SafeAreaView,
+  ScrollView,
+  KeyboardAvoidingView,
+  TouchableWithoutFeedback,
+  Keyboard,
 } from "react-native";
 import Header from "../components/Header";
 import Spacer from "../components/Spacer";
@@ -30,70 +34,77 @@ const LoginScreen = ({ errorMessage, onSubmit, navigation }) => {
     : "";
 
   return (
-    <SafeAreaView style={{ flex: 1, backgroundColor: "white" }}>
-      <View style={styles.container}>
-        <Input
-          label="Email"
-          value={email}
-          onChangeText={setEmail}
-          autoCapitalize="none"
-          autoCorrect={false}
-          placeholder="Email"
-          style={styles.InputStyle}
-          placeholderTextColor="green"
-          errorStyle={{ color: "red", fontSize: 18 }}
-          // errorMessage={errorMessageEmail}
-          leftIcon={
-            <MaterialCommunityIcons name="email" size={24} color="green" />
-          }
-          textContentType="emailAddress"
-        />
-        <Spacer />
-        <Input
-          secureTextEntry
-          label="Password"
-          value={password}
-          onChangeText={setPassword}
-          autoCapitalize="none"
-          autoCorrect={false}
-          placeholder="Password"
-          style={styles.InputStyle}
-          placeholderTextColor="green"
-          errorStyle={{ color: "red", fontSize: 18 }}
-          // errorMessage={errorMessageEmail}
-          leftIcon={{ type: "font-awesome", name: "lock", color: "green" }}
-          textContentType="password"
-        />
-        <Spacer />
+    <KeyboardAvoidingView
+      behavior={Platform.OS === "ios" ? "padding" : "height"}
+      style={{ flex: 1 }}
+    >
+      <TouchableWithoutFeedback onPress={Keyboard.dismiss}>
+        <ScrollView style={{ flex: 1, backgroundColor: "white" }}>
+          <View style={styles.container}>
+            <Input
+              label="Email"
+              value={email}
+              onChangeText={setEmail}
+              autoCapitalize="none"
+              autoCorrect={false}
+              placeholder="Email"
+              style={styles.InputStyle}
+              placeholderTextColor="green"
+              errorStyle={{ color: "red", fontSize: 18 }}
+              // errorMessage={errorMessageEmail}
+              leftIcon={
+                <MaterialCommunityIcons name="email" size={24} color="green" />
+              }
+              textContentType="emailAddress"
+            />
+            <Spacer />
+            <Input
+              secureTextEntry
+              label="Password"
+              value={password}
+              onChangeText={setPassword}
+              autoCapitalize="none"
+              autoCorrect={false}
+              placeholder="Password"
+              style={styles.InputStyle}
+              placeholderTextColor="green"
+              errorStyle={{ color: "red", fontSize: 18 }}
+              // errorMessage={errorMessageEmail}
+              leftIcon={{ type: "font-awesome", name: "lock", color: "green" }}
+              textContentType="password"
+            />
+            <Spacer />
 
-        <View
-          style={
-            {
-              // justifyContent: "center",
-              // alignItems: "center",
-              // flexDirection: "row",
-            }
-          }
-        >
-          <TouchableOpacity
-            style={styles.loginScreenButton}
-            onPress={() => navigation.navigate("LandingPage")}
-            underlayColor="#fff"
-          >
-            <Text style={styles.loginText}>Login</Text>
-          </TouchableOpacity>
-          <TouchableOpacity
-            onPress={() => navigation.navigate("SubscribeScreen")}
-            underlayColor="red"
-          >
-            <Text style={styles.subscribeText}>
-              <Text style={styles.labelText}>Don't have account ? </Text>
-              Subscribe Now
-            </Text>
-          </TouchableOpacity>
-        </View>
-      </View>
-    </SafeAreaView>
+            <View
+              style={
+                {
+                  // justifyContent: "center",
+                  // alignItems: "center",
+                  // flexDirection: "row",
+                }
+              }
+            >
+              <TouchableOpacity
+                style={styles.loginScreenButton}
+                onPress={() => navigation.navigate("LandingPage")}
+                underlayColor="#fff"
+              >
+                <Text style={styles.loginText}>Login</Text>
+              </TouchableOpacity>
+              <TouchableOpacity
+                onPress={() => navigation.navigate("SubscribeScreen")}
+                underlayColor="red"
+              >
+                <Text style={styles.subscribeText}>
+                  <Text style={styles.labelText}>Don't have account ? </Text>
+                  Subscribe Now
+                </Text>
+              </TouchableOpacity>
+            </View>
+          </View>
+        </ScrollView>
+      </TouchableWithoutFeedback>
+    </KeyboardAvoidingView>
   );
 };
 //{errorMessage ? (
@@ -104,6 +115,7 @@ const styles = StyleSheet.create({
     flex: 1,
     justifyContent: "center",
     marginBottom: 150,
+    marginTop: 50,
   },
   InputStyle: {
     fontSize: 14,
