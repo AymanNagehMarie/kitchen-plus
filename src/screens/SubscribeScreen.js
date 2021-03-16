@@ -21,6 +21,7 @@ import {
 import { Input, Text } from "react-native-elements";
 import Spacer from "../components/Spacer";
 import Theme from "../constants/Theme";
+import Style from "../constants/Style";
 
 const SubscribeScreen = ({ navigation }) => {
   const [fName, setfName] = useState("");
@@ -54,28 +55,21 @@ const SubscribeScreen = ({ navigation }) => {
   return (
     <KeyboardAvoidingView
       behavior={Platform.OS === "ios" ? "padding" : "height"}
-      style={{ flex: 1, backgroundColor: "white" }}
+      style={{ flex: 1, backgroundColor: Theme.COLORS.HEADER }}
     >
       {/* onPress={Keyboard.dismiss} */}
       <TouchableWithoutFeedback>
         <ScrollView
           showsVerticalScrollIndicator={false}
           showsHorizontalScrollIndicator={false}
-          style={{
-            flex: 1,
-            padding: 10,
-
-            // marginVertical: 80,
-            padding: 15,
-            marginBottom: 80,
-          }}
+          style={Style.container}
           contentContainerStyle={{ paddingBottom: 10 }}
         >
           <Spacer />
           <Input
             label="Enter your full name"
             labelStyle={{
-              color: "black",
+              color: Theme.COLORS.MAJOR,
               fontSize: 18,
               fontWeight: "normal",
             }}
@@ -85,10 +79,12 @@ const SubscribeScreen = ({ navigation }) => {
             autoCorrect={false}
             placeholder="Full Name"
             style={styles.InputStyle}
-            placeholderTextColor="green"
+            placeholderTextColor={Theme.COLORS.PLACEHOLDER}
             errorStyle={{ color: "red", fontSize: 18 }}
             errorMessage={errorMessageFName}
-            leftIcon={<AntDesign name="user" size={24} color="green" />}
+            leftIcon={
+              <AntDesign name="user" size={24} color={Theme.COLORS.MAJOR} />
+            }
             textContentType="name"
           />
           <Spacer />
@@ -96,7 +92,7 @@ const SubscribeScreen = ({ navigation }) => {
           <Input
             label="please enter your phone"
             labelStyle={{
-              color: "black",
+              color: Theme.COLORS.MAJOR,
               fontSize: 18,
               fontWeight: "normal",
             }}
@@ -106,13 +102,13 @@ const SubscribeScreen = ({ navigation }) => {
             autoCorrect={false}
             placeholder="Phone"
             style={styles.InputStyle}
-            placeholderTextColor="green"
+            placeholderTextColor={Theme.COLORS.PLACEHOLDER}
             errorStyle={{ color: "red", fontSize: 18 }}
             errorMessage={errorMessagePhone}
             leftIcon={{
               type: "vector-icons",
               name: "smartphone",
-              color: "green",
+              color: Theme.COLORS.MAJOR,
             }}
             textContentType="telephoneNumber"
             keyboardType={"numeric"}
@@ -121,7 +117,7 @@ const SubscribeScreen = ({ navigation }) => {
           <Input
             label="Please enter your address"
             labelStyle={{
-              color: "black",
+              color: Theme.COLORS.MAJOR,
               fontSize: 18,
               fontWeight: "normal",
             }}
@@ -131,17 +127,19 @@ const SubscribeScreen = ({ navigation }) => {
             autoCorrect={false}
             placeholder="Address "
             style={styles.InputStyle}
-            placeholderTextColor="green"
+            placeholderTextColor={Theme.COLORS.PLACEHOLDER}
             errorStyle={{ color: "red", fontSize: 18 }}
             errorMessage={errorMessageAddress}
-            leftIcon={<Entypo name="address" size={24} color="green" />}
+            leftIcon={
+              <Entypo name="address" size={24} color={Theme.COLORS.MAJOR} />
+            }
             textContentType="fullStreetAddress"
           />
           <Spacer />
           <Input
             label="Enter your your email"
             labelStyle={{
-              color: "black",
+              color: Theme.COLORS.MAJOR,
               fontSize: 18,
               fontWeight: "normal",
             }}
@@ -151,11 +149,15 @@ const SubscribeScreen = ({ navigation }) => {
             autoCorrect={false}
             placeholder="Email "
             style={styles.InputStyle}
-            placeholderTextColor="green"
+            placeholderTextColor={Theme.COLORS.PLACEHOLDER}
             errorStyle={{ color: "red", fontSize: 18 }}
             errorMessage={errorMessageEmail}
             leftIcon={
-              <MaterialCommunityIcons name="email" size={24} color="green" />
+              <MaterialCommunityIcons
+                name="email"
+                size={24}
+                color={Theme.COLORS.MAJOR}
+              />
             }
             textContentType="emailAddress"
           />
@@ -163,7 +165,7 @@ const SubscribeScreen = ({ navigation }) => {
           <Input
             label="Enter your password"
             labelStyle={{
-              color: "black",
+              color: Theme.COLORS.MAJOR,
               fontSize: 18,
               fontWeight: "normal",
             }}
@@ -174,10 +176,12 @@ const SubscribeScreen = ({ navigation }) => {
             secureTextEntry={true}
             placeholder="Password "
             style={styles.InputStyle}
-            placeholderTextColor="green"
+            placeholderTextColor={Theme.COLORS.PLACEHOLDER}
             errorStyle={{ color: "red", fontSize: 18 }}
             errorMessage={errorMessagePassword}
-            leftIcon={<Entypo name="lock" size={24} color="green" />}
+            leftIcon={
+              <Entypo name="lock" size={24} color={Theme.COLORS.MAJOR} />
+            }
             textContentType="password"
             keyboardType={"visible-password"}
           />
@@ -185,7 +189,7 @@ const SubscribeScreen = ({ navigation }) => {
           <Input
             label="Re-enter your password"
             labelStyle={{
-              color: "black",
+              color: Theme.COLORS.MAJOR,
               fontSize: 18,
               fontWeight: "normal",
             }}
@@ -196,10 +200,12 @@ const SubscribeScreen = ({ navigation }) => {
             secureTextEntry={true}
             placeholder="Confirm Password"
             style={styles.InputStyle}
-            placeholderTextColor="green"
+            placeholderTextColor={Theme.COLORS.PLACEHOLDER}
             errorStyle={{ color: "red", fontSize: 18 }}
             errorMessage={errorMessageConfirm}
-            leftIcon={<Entypo name="lock" size={24} color="green" />}
+            leftIcon={
+              <Entypo name="lock" size={24} color={Theme.COLORS.MAJOR} />
+            }
             textContentType="newPassword"
           />
 
@@ -231,7 +237,7 @@ const styles = StyleSheet.create({
     marginTop: 10,
     paddingTop: 10,
     paddingBottom: 10,
-    backgroundColor: "#1E6738",
+    backgroundColor: Theme.COLORS.MAJOR,
     borderRadius: 10,
     borderWidth: 1,
     borderColor: "#fff",
@@ -255,7 +261,7 @@ const styles = StyleSheet.create({
     borderBottomWidth: 0, //works,
     alignItems: "flex-start",
     flexDirection: "row",
-    color: "green",
+    color: Theme.COLORS.MAJOR,
   },
   linkText: {
     marginTop: 20,

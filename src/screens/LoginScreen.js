@@ -21,6 +21,8 @@ import Header from "../components/Header";
 import Spacer from "../components/Spacer";
 import { Text, Input, ThemeProvider, colors } from "react-native-elements";
 import Icon from "react-native-vector-icons/FontAwesome";
+import Theme from "../constants/Theme";
+import Style from "../constants/Style";
 
 const LoginScreen = ({ errorMessage, onSubmit, navigation }) => {
   const [email, setEmail] = useState("");
@@ -39,8 +41,9 @@ const LoginScreen = ({ errorMessage, onSubmit, navigation }) => {
       style={{ flex: 1 }}
     >
       <TouchableWithoutFeedback onPress={Keyboard.dismiss}>
-        <ScrollView style={{ flex: 1, backgroundColor: "white" }}>
-          <View style={styles.container}>
+        <ScrollView style={{ flex: 1, backgroundColor: Theme.COLORS.HEADER }}>
+          <View style={Style.container}>
+            <Spacer />
             <Input
               label="Email"
               value={email}
@@ -49,11 +52,15 @@ const LoginScreen = ({ errorMessage, onSubmit, navigation }) => {
               autoCorrect={false}
               placeholder="Email"
               style={styles.InputStyle}
-              placeholderTextColor="green"
+              placeholderTextColor={Theme.COLORS.MAJOR}
               errorStyle={{ color: "red", fontSize: 18 }}
               // errorMessage={errorMessageEmail}
               leftIcon={
-                <MaterialCommunityIcons name="email" size={24} color="green" />
+                <MaterialCommunityIcons
+                  name="email"
+                  size={24}
+                  color={Theme.COLORS.MAJOR}
+                />
               }
               textContentType="emailAddress"
             />
@@ -67,10 +74,14 @@ const LoginScreen = ({ errorMessage, onSubmit, navigation }) => {
               autoCorrect={false}
               placeholder="Password"
               style={styles.InputStyle}
-              placeholderTextColor="green"
+              placeholderTextColor={Theme.COLORS.MAJOR}
               errorStyle={{ color: "red", fontSize: 18 }}
               // errorMessage={errorMessageEmail}
-              leftIcon={{ type: "font-awesome", name: "lock", color: "green" }}
+              leftIcon={{
+                type: "font-awesome",
+                name: "lock",
+                color: Theme.COLORS.MAJOR,
+              }}
               textContentType="password"
             />
             <Spacer />
@@ -130,7 +141,7 @@ const styles = StyleSheet.create({
     borderBottomWidth: 0, //works,
     alignItems: "flex-start",
     flexDirection: "row",
-    color: "green",
+    color: Theme.COLORS.MAJOR,
   },
   loginScreenButton: {
     marginRight: 40,
@@ -138,7 +149,7 @@ const styles = StyleSheet.create({
     marginTop: 10,
     paddingTop: 10,
     paddingBottom: 10,
-    backgroundColor: "#1E6738",
+    backgroundColor: Theme.COLORS.MAJOR, //"#1E6738",
     borderRadius: 10,
     borderWidth: 1,
     borderColor: "#fff",
@@ -158,7 +169,7 @@ const styles = StyleSheet.create({
   },
   subscribeText: {
     marginTop: 20,
-    color: "#1E6738",
+    color: Theme.COLORS.MAJOR,
     textAlign: "center",
     fontWeight: "bold",
   },
