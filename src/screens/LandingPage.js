@@ -1,29 +1,43 @@
 // Dynamically Set Drawer/Sidebar Options in React Navigation Drawer
 // https://aboutreact.com/dynamically-change-sidebar-options/
 
-import React,{useState,useEffect} from "react";
-import { Button, View, Text, SafeAreaView,StyleSheet } from "react-native";
-import Spinner from 'react-native-loading-spinner-overlay';
-
+import React, { useState, useEffect } from "react";
+import {
+  Button,
+  View,
+  Text,
+  SafeAreaView,
+  StyleSheet,
+  Image,
+} from "react-native";
+import Spinner from "react-native-loading-spinner-overlay";
+import Theme from "../constants/Theme";
 const LandingPage = ({ navigation }) => {
   const [loading, setLoading] = useState(true);
-  useEffect(()=>{
+  useEffect(() => {
     setLoading(true);
     setTimeout(() => {
       setLoading(false);
-            navigation.navigate("drawerStack", { userType: "guest" });
+      navigation.reset({
+        index: 0,
+        routes: [
+          {
+            name: "drawerStack",
+            params: { userType: "guest" },
+          },
+        ],
+      });
+    }, 2000);
+  }, []);
 
-    }, 500);  },[])
-
-
-//  setTimeout(
-//     function() {
-//      {startLoading}
-//       navigation.navigate("drawerStack", { userType: "guest" });
-//     }
-//     .bind(this),
-//     1
-//   )
+  //  setTimeout(
+  //     function() {
+  //      {startLoading}
+  //       navigation.navigate("drawerStack", { userType: "guest" });
+  //     }
+  //     .bind(this),
+  //     1
+  //   )
   // setTimeout(
   //   function() {
   //     navigation.navigate("drawerStack", { userType: "guest" });
@@ -32,16 +46,19 @@ const LandingPage = ({ navigation }) => {
   //   1
   // )
   return (
-    <SafeAreaView style={{ flex: 1 }}>
-
-<Spinner
-          //visibility of Overlay Loading Spinner
-          visible={loading}
-          //Text with the Spinner
-          textContent={'Loading...'}
-          //Text style of the Spinner Text
-          textStyle={styles.spinnerTextStyle}
-        />
+    <SafeAreaView style={{ flex: 1, backgroundColor: Theme.COLORS.MAJOR }}>
+      <Image
+        source={require("../../assets/fruits.jpg")}
+        style={{ height: "100%", width: "100%" }}
+      />
+      <Spinner
+        //visibility of Overlay Loading Spinner
+        visible={loading}
+        //Text with the Spinner
+        textContent={"Loading..."}
+        //Text style of the Spinner Text
+        textStyle={styles.spinnerTextStyle}
+      />
       {/* <View style={{ flex: 1, padding: 16 }}>
         <View
           style={{
@@ -115,9 +132,8 @@ const LandingPage = ({ navigation }) => {
   );
 };
 const styles = StyleSheet.create({
-
   spinnerTextStyle: {
-    color: '#FFF',
+    color: "#FFF",
   },
 });
 export default LandingPage;

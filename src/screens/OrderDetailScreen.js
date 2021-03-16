@@ -27,12 +27,12 @@ const OrderDetailScreen = ({ navigation }) => {
             OrderDetailScreen
           </Text>
         </View>
-        <Text style={{ fontSize: 18, textAlign: "center", color: "grey" }}>
-          Dynamically Set Drawer/Sidebar Options
-        </Text>
-        <Text style={{ fontSize: 16, textAlign: "center", color: "grey" }}>
-          www.aboutreact.com
-        </Text>
+        <Text
+          style={{ fontSize: 18, textAlign: "center", color: "grey" }}
+        ></Text>
+        <Text
+          style={{ fontSize: 16, textAlign: "center", color: "grey" }}
+        ></Text>
       </View>
     </SafeAreaView>
   );

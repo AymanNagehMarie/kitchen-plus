@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import {
   Ionicons,
   Entypo,
@@ -24,8 +24,10 @@ import Icon from "react-native-vector-icons/FontAwesome";
 import Theme from "../constants/Theme";
 import Style from "../constants/Style";
 import { users } from "../data/dataArrays";
+import Spinner from "react-native-loading-spinner-overlay";
 
 const LoginScreen = ({ errorMessage, onSubmit, navigation }) => {
+  const [loading, setLoading] = useState(false);
   const [email, setEmail] = useState("");
   const isValidEmail = email == "";
   const errorMessageEmail = isValidEmail ? "Your email is required." : "";
@@ -44,6 +46,14 @@ const LoginScreen = ({ errorMessage, onSubmit, navigation }) => {
       <TouchableWithoutFeedback onPress={Keyboard.dismiss}>
         <ScrollView style={{ flex: 1, backgroundColor: Theme.COLORS.HEADER }}>
           <View style={Style.container}>
+            <Spinner
+              //visibility of Overlay Loading Spinner
+              visible={loading}
+              //Text with the Spinner
+              textContent={"Loading..."}
+              //Text style of the Spinner Text
+              textStyle={styles.spinnerTextStyle}
+            />
             <Spacer />
             <Input
               label="Email"
@@ -110,13 +120,27 @@ const LoginScreen = ({ errorMessage, onSubmit, navigation }) => {
                 style={styles.loginScreenButton}
                 onPress={() => {
                   if (email == "client") {
-                    navigation.navigate("drawerStack", { userType: "client" });
+                    setLoading(true);
+                    setTimeout(() => {
+                      setLoading(false);
+                      navigation.navigate("drawerStack", {
+                        userType: "client",
+                      });
+                    }, 1000);
                   } else if (email == "sales") {
-                    navigation.navigate("drawerStack", { userType: "sales" });
+                    setLoading(true);
+                    setTimeout(() => {
+                      setLoading(false);
+                      navigation.navigate("drawerStack", { userType: "sales" });
+                    }, 1000);
                   } else if (email == "delivery") {
-                    navigation.navigate("drawerStack", {
-                      userType: "delivery",
-                    });
+                    setLoading(true);
+                    setTimeout(() => {
+                      setLoading(false);
+                      navigation.navigate("drawerStack", {
+                        userType: "delivery",
+                      });
+                    }, 1000);
                   }
                 }}
                 underlayColor="#fff"
@@ -198,6 +222,9 @@ const styles = StyleSheet.create({
     color: "black",
     fontSize: 15,
     textDecorationLine: "underline",
+  },
+  spinnerTextStyle: {
+    color: "#FFF",
   },
 });
 

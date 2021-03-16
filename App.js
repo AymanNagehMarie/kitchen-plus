@@ -63,20 +63,21 @@ const NavigationDrawerStructure = (props) => {
 
   return (
     <View style={{ marginHorizontal: 0, flexDirection: "row" }}>
-
-    <View style={{ marginHorizontal: 0, flexDirection: "row" }}>
-      <TouchableOpacity onPress={toggleDrawer}>
-        <Feather name="menu" size={40} color={Theme.COLORS.MAJOR} />
-
-      </TouchableOpacity>
+      <View style={{ marginHorizontal: 0, flexDirection: "row" }}>
+        <TouchableOpacity onPress={toggleDrawer}>
+          <Feather name="menu" size={40} color={Theme.COLORS.MAJOR} />
+        </TouchableOpacity>
+      </View>
+      <View style={{ marginHorizontal: 1, flexDirection: "row" }}>
+        <TouchableOpacity onPress={toggleDrawer}>
+          <MaterialCommunityIcons
+            name="fruit-cherries"
+            size={40}
+            color="orange"
+          />
+        </TouchableOpacity>
+      </View>
     </View>
-    <View style={{ marginHorizontal: 1, flexDirection: "row" }}>
-    <TouchableOpacity onPress={toggleDrawer}>
-    <MaterialCommunityIcons name="fruit-cherries" size={40} color="orange" />
-    </TouchableOpacity>
-  </View>
-  </View>
-
   );
 };
 
@@ -92,7 +93,6 @@ const productScreenStack = ({ navigation, route }) => {
 
           headerLeft: () => (
             <NavigationDrawerStructure navigationProps={navigation} />
-
           ),
           headerRight: () => (
             <View
@@ -118,8 +118,8 @@ const productScreenStack = ({ navigation, route }) => {
                 >
                   <TouchableOpacity
                     style={{
-                      width: 12,
-                      height: 12,
+                      width: 25,
+                      height: 25,
                       alignItems: "center",
                       opacity: 1,
                       shadowOpacity: "red",
@@ -131,7 +131,9 @@ const productScreenStack = ({ navigation, route }) => {
                       borderBottomRightRadius: 25,
                     }}
                     underlayColor="#fff"
-                  ></TouchableOpacity>
+                  >
+                    <Text>12</Text>
+                  </TouchableOpacity>
                 </TouchableOpacity>
               </View>
               <AntDesign
@@ -152,7 +154,7 @@ const productScreenStack = ({ navigation, route }) => {
           headerTintColor: Theme.COLORS.MAJOR, //Set Header text color
           headerTitleStyle: {
             fontWeight: "bold", //Set Header text style
-            textAlign:"center" //Set Header text style
+            textAlign: "center", //Set Header text style
           },
         }}
       />
@@ -174,7 +176,7 @@ const cartItemScreenStack = ({ navigation }) => {
         headerTintColor: Theme.COLORS.MAJOR, //Set Header text color
         headerTitleStyle: {
           fontWeight: "bold", //Set Header text style
-            textAlign:"center" //Set Header text style
+          textAlign: "center", //Set Header text style
         },
       }}
     >
@@ -203,7 +205,7 @@ const salesOrderHistoryScreenStack = ({ navigation }) => {
         headerTintColor: Theme.COLORS.MAJOR, //Set Header text color
         headerTitleStyle: {
           fontWeight: "bold", //Set Header text style
-            textAlign:"center" //Set Header text style
+          textAlign: "center", //Set Header text style
         },
       }}
     >
@@ -232,7 +234,7 @@ const deliveryListScreenStack = ({ navigation }) => {
         headerTintColor: Theme.COLORS.MAJOR, //Set Header text color
         headerTitleStyle: {
           fontWeight: "bold", //Set Header text style
-            textAlign:"center" //Set Header text style
+          textAlign: "center", //Set Header text style
         },
       }}
     >
@@ -261,7 +263,7 @@ const deliveryOrderDetailStack = ({ navigation }) => {
         headerTintColor: Theme.COLORS.MAJOR, //Set Header text color
         headerTitleStyle: {
           fontWeight: "bold", //Set Header text style
-            textAlign:"center" //Set Header text style
+          textAlign: "center", //Set Header text style
         },
       }}
     >
@@ -290,7 +292,7 @@ const addClientScreenStack = ({ navigation }) => {
         headerTintColor: Theme.COLORS.MAJOR, //Set Header text color
         headerTitleStyle: {
           fontWeight: "bold", //Set Header text style
-            textAlign:"center" //Set Header text style
+          textAlign: "center", //Set Header text style
         },
       }}
     >
@@ -319,7 +321,7 @@ const loginScreenStack = ({ navigation }) => {
         headerTintColor: Theme.COLORS.MAJOR, //Set Header text color
         headerTitleStyle: {
           fontWeight: "bold", //Set Header text style
-            textAlign:"center" //Set Header text style
+          textAlign: "center", //Set Header text style
         },
       }}
     >
@@ -348,7 +350,7 @@ const subscribeScreenStack = ({ navigation }) => {
         headerTintColor: Theme.COLORS.MAJOR, //Set Header text color
         headerTitleStyle: {
           fontWeight: "bold", //Set Header text style
-            textAlign:"center" //Set Header text style
+          textAlign: "center", //Set Header text style
         },
       }}
     >
@@ -377,7 +379,7 @@ const orderDetailScreenStack = ({ navigation }) => {
         headerTintColor: Theme.COLORS.MAJOR, //Set Header text color
         headerTitleStyle: {
           fontWeight: "bold", //Set Header text style
-            textAlign:"center" //Set Header text style
+          textAlign: "center", //Set Header text style
         },
       }}
     >
@@ -406,7 +408,7 @@ const profileScreenStack = ({ navigation }) => {
         headerTintColor: Theme.COLORS.MAJOR, //Set Header text color
         headerTitleStyle: {
           fontWeight: "bold", //Set Header text style
-            textAlign:"center" //Set Header text style
+          textAlign: "center", //Set Header text style
         },
       }}
     >
@@ -437,7 +439,7 @@ const orderHistoryScreenStack = ({ navigation }) => {
         headerTintColor: Theme.COLORS.MAJOR, //Set Header text color
         headerTitleStyle: {
           fontWeight: "bold", //Set Header text style
-            textAlign:"center" //Set Header text style
+          textAlign: "center", //Set Header text style
         },
       }}
     >
@@ -472,11 +474,15 @@ const drawerStack = ({ route }) => {
                   <AntDesign name="login" color={color} size={size} />
                 )}
                 label={({ color }) => <Text style={{ color }}>Login</Text>}
-                onPress={() =>
+                onPress={() => {
                   props.navigation.navigate("LoginScreen", {
                     userType: "guest",
-                  })
-                }
+                  });
+                  {
+                    // close side panel
+                    props.navigation.closeDrawer();
+                  }
+                }}
               />
             ) : null}
 
@@ -538,7 +544,7 @@ const drawerStack = ({ route }) => {
             component={productScreenStack}
             initialParams={{ userType: route.params.userType }}
           />
-<Drawer.Screen
+          <Drawer.Screen
             name="CartItemScreen"
             options={{ drawerLabel: "Cart Items" }}
             component={cartItemScreenStack}
