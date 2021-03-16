@@ -9,7 +9,6 @@ import React, { useState } from "react";
 import { recipes } from "../data/dataArrays";
 import CellItem from "../components/CellItem";
 const ProductScreen = ({ navigation, route }) => {
-  navigation.closeDrawer();
   return (
     <SafeAreaView style={{ flex: 1 }}>
       <View style={styles.container}>

@@ -609,8 +609,9 @@ const App = () => {
   return (
     <NavigationContainer>
       <Stack.Navigator screenOptions={{ headerShown: false }}>
-        <Stack.Screen name="LoginScreen" component={loginScreenStack} />
         <Stack.Screen name="LandingPage" component={LandingPage} />
+        <Stack.Screen name="LoginScreen" component={loginScreenStack} />
+
         <Stack.Screen
           name="DeliveryOrderDetailScreen"
           component={deliveryOrderDetailStack}
