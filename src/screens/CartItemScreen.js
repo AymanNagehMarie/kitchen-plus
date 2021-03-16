@@ -1,7 +1,8 @@
-import { View, StyleSheet, SafeAreaView,FlatList,TouchableHighlight } from "react-native";
+import { View,Text, StyleSheet, SafeAreaView,TouchableOpacity,FlatList,TouchableHighlight } from "react-native";
 import React, { useState } from "react";
 import { cartItems } from '../data/dataArrays';
 import CellItem from "../components/CellCartItem"
+import Theme from "../constants/Theme";
 const CartItemScreen = ({ navigation, route }) => {
   return (
     <SafeAreaView style={{ flex: 1 }}>
@@ -26,6 +27,37 @@ const CartItemScreen = ({ navigation, route }) => {
           keyExtractor={item => `${item.recipeId}`}
         />
       </View>
+      <View style={{borderTopWidth:2,borderColor:Theme.COLORS.MAJOR,height:100,justifyContent:"center"}}> 
+      <View style={{flexDirection:"row",marginHorizontal:5}}>
+      <Text style={{fontSize:25}}>Total Amount : </Text>
+      <Text  numberOfLines={1} style={{fontSize:25,color:Theme.COLORS.MAJOR}}>45,215 AED</Text>
+           </View> 
+           <Text style={{fontSize:12,marginHorizontal:5}}>free shipping </Text>
+           <View style={{flexDirection:"row",justifyContent:"center",marginHorizontal:5}}><TouchableOpacity
+  
+  style={{   
+    height:30,
+    width:200,
+    backgroundColor: Theme.COLORS.MAJOR,
+    alignItems: 'center',
+    justifyContent: 'center',
+    borderTopLeftRadius: 75,
+    borderBottomLeftRadius: 75,
+    borderTopRightRadius: 75,
+    borderBottomRightRadius: 75,
+}}
+      underlayColor="#fff"
+  >
+
+  <Text style={{
+ fontSize:13,
+
+
+ color:"white",
+}}>Checkout</Text>
+  </TouchableOpacity ></View>
+      </View>
+
     </SafeAreaView>
   );
 };

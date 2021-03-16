@@ -526,7 +526,12 @@ const drawerStack = ({ route }) => {
             component={productScreenStack}
             initialParams={{ userType: route.params.userType }}
           />
-
+<Drawer.Screen
+            name="CartItemScreen"
+            options={{ drawerLabel: "Cart Items" }}
+            component={cartItemScreenStack}
+            initialParams={{ userType: route.params.userType }}
+          />
           {/* <Drawer.Screen
             name="SecondPage"
             options={{ drawerLabel: "Second page Option" }}
