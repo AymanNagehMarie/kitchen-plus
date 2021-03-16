@@ -1,6 +1,6 @@
 import { View, StyleSheet, SafeAreaView,FlatList,TouchableHighlight } from "react-native";
 import React, { useState } from "react";
-import { recipes } from '../data/dataArrays';
+import { cartItems } from '../data/dataArrays';
 import CellItem from "../components/CellCartItem"
 const CartItemScreen = ({ navigation, route }) => {
   return (
@@ -13,7 +13,7 @@ const CartItemScreen = ({ navigation, route }) => {
           horizontal={false}
           showsVerticalScrollIndicator={false}
           numColumns={1}
-          data={recipes}
+          data={cartItems}
           renderItem={({ item }) => {
             return (
               <TouchableHighlight  underlayColor='rgba(73,182,77,0.9)'/* onPress={() => this.onPressRecipe(item)}*/>
