@@ -1,41 +1,41 @@
-// Dynamically Set Drawer/Sidebar Options in React Navigation Drawer
-// https://aboutreact.com/dynamically-change-sidebar-options/
-
-import * as React from "react";
-import { Button, View, Text, SafeAreaView } from "react-native";
-
-const CartItemScreen = ({ navigation }) => {
+import { View, StyleSheet, SafeAreaView,FlatList,TouchableHighlight } from "react-native";
+import React, { useState } from "react";
+import { recipes } from '../data/dataArrays';
+import CellItem from "../components/CellCartItem"
+const CartItemScreen = ({ navigation, route }) => {
   return (
     <SafeAreaView style={{ flex: 1 }}>
-      <View style={{ flex: 1, padding: 16 }}>
-        <View
-          style={{
-            flex: 1,
-            alignItems: "center",
-            justifyContent: "center",
+       <View  style={styles.container}>
+        <FlatList
+          vertical
+          showsHorizontalScrollIndicator={true}
+          scrollToOverflowEnabled={false}
+          horizontal={false}
+          showsVerticalScrollIndicator={false}
+          numColumns={1}
+          data={recipes}
+          renderItem={({ item }) => {
+            return (
+              <TouchableHighlight  underlayColor='rgba(73,182,77,0.9)'/* onPress={() => this.onPressRecipe(item)}*/>
+  <CellItem  title={item.title} price={item.price} unit={item.unit} photo_url={item.photo_url}  onIncrease={()=> console.log("+"+item.title)}
+  onDecrease={()=> console.log("-"+item.title)}
+></CellItem>   
+  </TouchableHighlight>
+            );
           }}
-        >
-          <Text
-            style={{
-              fontSize: 18,
-              textAlign: "center",
-              marginBottom: 16,
-            }}
-          >
-            Dynamically Set Drawer/Sidebar Options in React Navigation Drawer
-            {"\n\n"}
-            CartItemScreen
-          </Text>
-        </View>
-        <Text style={{ fontSize: 18, textAlign: "center", color: "grey" }}>
-          Dynamically Set Drawer/Sidebar Options
-        </Text>
-        <Text style={{ fontSize: 16, textAlign: "center", color: "grey" }}>
-          www.aboutreact.com
-        </Text>
+          keyExtractor={item => `${item.recipeId}`}
+        />
       </View>
     </SafeAreaView>
   );
 };
+const styles = StyleSheet.create({
+container: {  
+margin:10,
+  flex: 1, 
+alignContent:"space-between",
+  justifyContent: 'flex-start',  
 
+}
+});
 export default CartItemScreen;

@@ -4,71 +4,38 @@ import { Colors } from "react-native/Libraries/NewAppScreen";
 import { View, StyleSheet, Text,Image,TouchableOpacity, Button } from "react-native";
 import { RecipeCard } from '../AppStyles';
 import React, { useState } from "react";
-import Theme from "../../src/constants/Theme"
-
-const CellItem = (props) => {  
+import Theme from "../constants/Theme";
+import Close from "../components/Close";
+const CellCartItem = (props) => {  
   console.log(props);
   const [counter, setCounter] = useState(1);
-const [flag, setFlag] = useState(true);
-  const [dynamicView, setDynamicView] = useState(<TouchableOpacity
+
+const [flag, setFlag] = useState(false);
+  const [dynamicView, setDynamicView] = useState(<View style={styles.spContainer}><TouchableOpacity
   
-    style={styles.btnCartItemMinor}
+    style={{
+      flex:1,
+      height:30,
+      //backgroundColor: Theme.COLORS.MAJOR,
+      borderColor: Theme.COLORS.MAJOR,
+      borderWidth:1,
+      alignItems: 'center',
+      justifyContent: 'center',
+      borderTopLeftRadius: 25,
+      borderBottomLeftRadius: 25,
+      borderTopRightRadius: 25,
+      borderBottomRightRadius: 25,
+        
+  }}
          onPress={() => {
-          setFlag(false);
+          setFlag(true);
 }}
         underlayColor="#fff"
     >
 
-    <Text style={styles.btnTextMinor}>Add To Cart</Text>
-    </TouchableOpacity >);
-//     const addToCart=()=>{
-// setDynamicView(<TouchableOpacity
-  
-//   style={{
-//     flex:1,
-//     height:30,
-//     backgroundColor: Theme.COLORS.MAJOR,
-//     alignItems: 'center',
-//     justifyContent: 'center',
-//     borderTopLeftRadius: 25,
-//     borderBottomLeftRadius: 25,
-//     borderTopRightRadius: 25,
-//     borderBottomRightRadius: 25
-// }}
-//        onPress={() => {
-//         removeFromCart();
-// }}
-//       underlayColor="#fff"
-//   >
-
-//   <Text style={styles.btnText}>Add To Cart</Text>
-//   </TouchableOpacity >)
-//     }
-//     const removeFromCart=()=>{
-//             setDynamicView(<TouchableOpacity
-  
-//               style={{
-//                 flex:1,
-//                 height:30,
-//                 backgroundColor: Theme.COLORS.MAJOR,
-//                 alignItems: 'center',
-//                 justifyContent: 'center',
-//                 borderTopLeftRadius: 25,
-//                 borderBottomLeftRadius: 25,
-//                 borderTopRightRadius: 25,
-//                 borderBottomRightRadius: 25
-//             }}
-//                    onPress={() => {
-//                     addToCart();
-//                   }}
-//                   underlayColor="#fff"
-//               >
-            
-//             <Text >Remove To Cart</Text>
-//             </TouchableOpacity >)
-      
-//     }
-    const spinner=(<View style={styles.spContainer}>
+    <Text style={styles.btnTextMinor}>Remove From Cart</Text>
+    </TouchableOpacity ></View>);
+  const spinner=(<View style={styles.spContainer}>
   <TouchableOpacity
     style={{
       width: 30,
@@ -86,7 +53,7 @@ const [flag, setFlag] = useState(true);
           if (counter % 2 == 0) {
             setCounter(counter / 2);
           }else{
-            setFlag(true)
+           // setFlag(true)
           }
           props.onDecrease();
         }}
@@ -129,25 +96,29 @@ const [flag, setFlag] = useState(true);
   return (
 
 
-
 <View   style={styles.container}>
-     
+  
       <Image style={RecipeCard.photo}  source={{ uri: props.photo_url }} />
-      <View style={{flexDirection:"row"}}>
+      <View style={{flexDirection:"column",marginHorizontal:6,justifyContent:"space-between"}}>
       <Text  numberOfLines={1} style={styles.titleText}>{props.title}</Text>
-      </View>
+     
       <View style={{flexDirection:"row"}}>
       <Text style={styles.text}>price : </Text>
-      <Text style={styles.txtPrice}>{props.price}</Text>
+      
+      <Text style={styles.txtPrice}>{parseInt(counter)*parseInt(props.price)}</Text>
       </View>
       <View style={{flexDirection:"row"}}>
       <Text style={styles.text}>unit : </Text>
       <Text style={styles.text}>{props.unit}</Text>
       </View>
-     {flag? (dynamicView):spinner}
-        <View style={styles.spContainer}>
+     {/* {flag? (dynamicView):spinner} */}
+     {spinner}
+     {dynamicView}
 </View>
+
+
     </View>
+    
   );
 };
 const styles = StyleSheet.create({
@@ -157,9 +128,6 @@ alignSelf:"stretch",
 //width:100
 //flex:1
 
-  }, txtPrice:{
-    //fontWeight:"bold",
-    color:Theme.COLORS.MAJOR,
   },
 container: {  
 margin:10,
@@ -167,6 +135,7 @@ margin:10,
 alignContent:"space-between",
   //alignItems:"center",
   justifyContent: 'flex-start',  
+  flexDirection:"row",
 },   fixToText: {
   //alignItems: "center",
   flexDirection: "row",
@@ -189,12 +158,17 @@ borderRadius:10,
 }, spContainer: {
   //alignItems: "center",
   flexDirection: "row",
+  width:120,
+  
   alignContent:"space-between",
   justifyContent: "center",
-}, 
+}, txtPrice:{
+ // fontWeight:"bold",
+  color:Theme.COLORS.MAJOR,
+},
 titleText:{
   alignSelf:"stretch",
-  width:130
+  width:170
 },
 textPlus:{
   color:"white",
@@ -214,7 +188,7 @@ textPlus:{
   borderBottomRightRadius: 25
 },btnCartItemMinor:{
   flex:1,
-  height:30,
+  height:120,
   borderWidth:2,
   borderColor: Theme.COLORS.MAJOR,
   alignItems: 'center',
@@ -224,11 +198,13 @@ textPlus:{
   borderTopRightRadius: 25,
   borderBottomRightRadius: 25
 },btnTextMinor:{
-  color:Theme.COLORS.BLACK,
-   fontSize:12
+ // color:Theme.COLORS.BLACK,
+   fontSize:12,
+   color:"red"
+   //height:50
 },box:{
   borderWidth:1,
   borderColor:"red"
 }
 });
-export default CellItem;
+export default CellCartItem;
