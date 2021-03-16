@@ -34,7 +34,7 @@ const LoginScreen = ({ errorMessage, onSubmit, navigation }) => {
   const errorMessagePassword = isValidPassword
     ? "Your password is required."
     : "";
-
+  navigation.navigate("LoginScreen");
   return (
     <KeyboardAvoidingView
       behavior={Platform.OS === "ios" ? "padding" : "height"}
@@ -46,13 +46,18 @@ const LoginScreen = ({ errorMessage, onSubmit, navigation }) => {
             <Spacer />
             <Input
               label="Email"
+              labelStyle={{
+                color: Theme.COLORS.MAJOR,
+                fontSize: 18,
+                fontWeight: "normal",
+              }}
               value={email}
               onChangeText={setEmail}
               autoCapitalize="none"
               autoCorrect={false}
               placeholder="Email"
               style={styles.InputStyle}
-              placeholderTextColor={Theme.COLORS.MAJOR}
+              placeholderTextColor={Theme.COLORS.PLACEHOLDER}
               errorStyle={{ color: "red", fontSize: 18 }}
               // errorMessage={errorMessageEmail}
               leftIcon={
@@ -68,13 +73,18 @@ const LoginScreen = ({ errorMessage, onSubmit, navigation }) => {
             <Input
               secureTextEntry
               label="Password"
+              labelStyle={{
+                color: Theme.COLORS.MAJOR,
+                fontSize: 18,
+                fontWeight: "normal",
+              }}
               value={password}
               onChangeText={setPassword}
               autoCapitalize="none"
               autoCorrect={false}
               placeholder="Password"
               style={styles.InputStyle}
-              placeholderTextColor={Theme.COLORS.MAJOR}
+              placeholderTextColor={Theme.COLORS.PLACEHOLDER}
               errorStyle={{ color: "red", fontSize: 18 }}
               // errorMessage={errorMessageEmail}
               leftIcon={{
