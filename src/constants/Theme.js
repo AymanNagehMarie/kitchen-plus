@@ -1,7 +1,8 @@
 export default {
   COLORS: {
-    HEADER:"#fff",
-    MAJOR:"#7bb719",
+    HEADER: "#fff",
+    MAJOR: "#7bb719",
+    PLACEHOLDER: "#C0C0C0",
 
     DEFAULT: "#172B4D",
     PRIMARY: "#5E72E4",
