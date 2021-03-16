@@ -5,10 +5,16 @@ import * as React from "react";
 import { Button, View, Text, SafeAreaView } from "react-native";
 
 const LandingPage = ({ navigation }) => {
-  navigation.navigate("drawerStack", { userType: "guest" });
+  setTimeout(
+    function() {
+      navigation.navigate("drawerStack", { userType: "guest" });
+    }
+    .bind(this),
+    1
+  )
   return (
     <SafeAreaView style={{ flex: 1 }}>
-      <View style={{ flex: 1, padding: 16 }}>
+      {/* <View style={{ flex: 1, padding: 16 }}>
         <View
           style={{
             flex: 1,
@@ -76,7 +82,7 @@ const LandingPage = ({ navigation }) => {
         <Text style={{ fontSize: 16, textAlign: "center", color: "grey" }}>
           www.aboutreact.com
         </Text>
-      </View>
+      </View> */}
     </SafeAreaView>
   );
 };

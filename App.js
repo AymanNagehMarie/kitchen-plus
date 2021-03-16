@@ -62,22 +62,21 @@ const NavigationDrawerStructure = (props) => {
   };
 
   return (
-    <View style={{ marginHorizontal: 10, flexDirection: "row" }}>
+    <View style={{ marginHorizontal: 0, flexDirection: "row" }}>
+
+    <View style={{ marginHorizontal: 0, flexDirection: "row" }}>
       <TouchableOpacity onPress={toggleDrawer}>
-        {/*Donute Button Image */}
-        {/* <Foundation name="list" size={30} color={Theme.COLORS.MAJOR} /> */}
-        <Feather name="menu" size={30} color={Theme.COLORS.MAJOR} />
-        {/* <Image
-        backgroundColor={Theme.COLORS.MAJOR}
-       // color={Theme.COLORS.MAJOR}
-          source={{
-            uri:
-              "https://raw.githubusercontent.com/AboutReact/sampleresource/master/drawerWhite.png",
-          }}
-          style={{width: 25, height: 25, marginLeft: 5 }}
-        /> */}
+        <Feather name="menu" size={40} color={Theme.COLORS.MAJOR} />
+
       </TouchableOpacity>
     </View>
+    <View style={{ marginHorizontal: 1, flexDirection: "row" }}>
+    <TouchableOpacity onPress={toggleDrawer}>
+    <MaterialCommunityIcons name="fruit-cherries" size={40} color="orange" />
+    </TouchableOpacity>
+  </View>
+  </View>
+
   );
 };
 
@@ -89,9 +88,11 @@ const productScreenStack = ({ navigation, route }) => {
         component={ProductScreen}
         initialParams={route.params}
         options={{
-          title: "Product", //Set Header Title
+          title: "Products", //Set Header Title
+
           headerLeft: () => (
             <NavigationDrawerStructure navigationProps={navigation} />
+
           ),
           headerRight: () => (
             <View
@@ -135,7 +136,7 @@ const productScreenStack = ({ navigation, route }) => {
               </View>
               <AntDesign
                 name="shoppingcart"
-                size={30}
+                size={40}
                 color={Theme.COLORS.MAJOR}
                 onPress={() => {
                   navigation.navigate("CartItemScreen");
@@ -151,6 +152,7 @@ const productScreenStack = ({ navigation, route }) => {
           headerTintColor: Theme.COLORS.MAJOR, //Set Header text color
           headerTitleStyle: {
             fontWeight: "bold", //Set Header text style
+            textAlign:"center" //Set Header text style
           },
         }}
       />
@@ -172,6 +174,7 @@ const cartItemScreenStack = ({ navigation }) => {
         headerTintColor: Theme.COLORS.MAJOR, //Set Header text color
         headerTitleStyle: {
           fontWeight: "bold", //Set Header text style
+            textAlign:"center" //Set Header text style
         },
       }}
     >
@@ -200,6 +203,7 @@ const salesOrderHistoryScreenStack = ({ navigation }) => {
         headerTintColor: Theme.COLORS.MAJOR, //Set Header text color
         headerTitleStyle: {
           fontWeight: "bold", //Set Header text style
+            textAlign:"center" //Set Header text style
         },
       }}
     >
@@ -228,6 +232,7 @@ const deliveryListScreenStack = ({ navigation }) => {
         headerTintColor: Theme.COLORS.MAJOR, //Set Header text color
         headerTitleStyle: {
           fontWeight: "bold", //Set Header text style
+            textAlign:"center" //Set Header text style
         },
       }}
     >
@@ -256,6 +261,7 @@ const deliveryOrderDetailStack = ({ navigation }) => {
         headerTintColor: Theme.COLORS.MAJOR, //Set Header text color
         headerTitleStyle: {
           fontWeight: "bold", //Set Header text style
+            textAlign:"center" //Set Header text style
         },
       }}
     >
@@ -284,6 +290,7 @@ const addClientScreenStack = ({ navigation }) => {
         headerTintColor: Theme.COLORS.MAJOR, //Set Header text color
         headerTitleStyle: {
           fontWeight: "bold", //Set Header text style
+            textAlign:"center" //Set Header text style
         },
       }}
     >
@@ -312,6 +319,7 @@ const loginScreenStack = ({ navigation }) => {
         headerTintColor: Theme.COLORS.MAJOR, //Set Header text color
         headerTitleStyle: {
           fontWeight: "bold", //Set Header text style
+            textAlign:"center" //Set Header text style
         },
       }}
     >
@@ -340,6 +348,7 @@ const subscribeScreenStack = ({ navigation }) => {
         headerTintColor: Theme.COLORS.MAJOR, //Set Header text color
         headerTitleStyle: {
           fontWeight: "bold", //Set Header text style
+            textAlign:"center" //Set Header text style
         },
       }}
     >
@@ -368,6 +377,7 @@ const orderDetailScreenStack = ({ navigation }) => {
         headerTintColor: Theme.COLORS.MAJOR, //Set Header text color
         headerTitleStyle: {
           fontWeight: "bold", //Set Header text style
+            textAlign:"center" //Set Header text style
         },
       }}
     >
@@ -396,6 +406,7 @@ const profileScreenStack = ({ navigation }) => {
         headerTintColor: Theme.COLORS.MAJOR, //Set Header text color
         headerTitleStyle: {
           fontWeight: "bold", //Set Header text style
+            textAlign:"center" //Set Header text style
         },
       }}
     >
@@ -426,6 +437,7 @@ const orderHistoryScreenStack = ({ navigation }) => {
         headerTintColor: Theme.COLORS.MAJOR, //Set Header text color
         headerTitleStyle: {
           fontWeight: "bold", //Set Header text style
+            textAlign:"center" //Set Header text style
         },
       }}
     >
