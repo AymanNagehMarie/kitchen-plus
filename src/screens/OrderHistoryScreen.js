@@ -1,54 +1,41 @@
-// Dynamically Set Drawer/Sidebar Options in React Navigation Drawer
-// https://aboutreact.com/dynamically-change-sidebar-options/
-
-import * as React from "react";
-import {
-  Button,
-  View,
-  Text,
-  SafeAreaView,
-  TouchableOpacity,
-} from "react-native";
-
-const OrderHistoryScreen = ({ navigation }) => {
+import { View, StyleSheet, SafeAreaView,FlatList,TouchableHighlight } from "react-native";
+import React, { useState } from "react";
+import { OrderDetails } from '../data/dataArrays';
+import CellOrderHistory from "../components/CellOrderHistory"
+const OrderHistoryScreen = ({ navigation, route }) => {
   return (
     <SafeAreaView style={{ flex: 1 }}>
-      <View style={{ flex: 1, padding: 16 }}>
-        <View
-          style={{
-            flex: 1,
-            alignItems: "center",
-            justifyContent: "center",
+       <View  style={styles.container}>
+        <FlatList
+          vertical
+          showsHorizontalScrollIndicator={true}
+          scrollToOverflowEnabled={false}
+          horizontal={false}
+          showsVerticalScrollIndicator={false}
+          numColumns={1}
+          data={OrderDetails}
+          renderItem={({ item }) => {
+            return (
+              <TouchableHighlight  underlayColor='rgba(73,182,77,0.9)'/* onPress={() => this.onPressRecipe(item)}*/>
+  <CellOrderHistory  orderId={item.orderId} orderDate={item.orderDate} details="More Details >" orderStatusCode={item.orderStatusCode} orderStatusMsg={item.orderStatusMsg} orderTotalPrice={item.orderTotalPrice} onIncrease={()=> console.log("+"+item.title)}
+  onDecrease={()=> console.log("-"+item.title)}
+></CellOrderHistory>   
+  </TouchableHighlight>
+            );
           }}
-        >
-          <Text
-            style={{
-              fontSize: 18,
-              textAlign: "center",
-              marginBottom: 16,
-            }}
-          >
-            Dynamically Set Drawer/Sidebar Options in React Navigation Drawer
-            {"\n\n"}
-            OrderHistoryScreen
-          </Text>
-
-          <TouchableOpacity
-            onPress={() => navigation.navigate("OrderDetailScreen")}
-            underlayColor="#fff"
-          >
-            <Text>Go To Details </Text>
-          </TouchableOpacity>
-        </View>
-        <Text style={{ fontSize: 18, textAlign: "center", color: "grey" }}>
-          Dynamically Set Drawer/Sidebar Options
-        </Text>
-        <Text style={{ fontSize: 16, textAlign: "center", color: "grey" }}>
-          www.aboutreact.com
-        </Text>
+          keyExtractor={item => `${item.orderId}`}
+        />
       </View>
     </SafeAreaView>
   );
 };
+const styles = StyleSheet.create({
+container: {  
+margin:10,
+  flex: 1, 
+alignContent:"space-between",
+  justifyContent: 'flex-start',  
 
+}
+});
 export default OrderHistoryScreen;
