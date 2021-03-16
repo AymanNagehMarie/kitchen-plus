@@ -28,7 +28,7 @@ const AddClientScreen = ({ navigation }) => {
   const isValidFName = fName == "";
   const errorMessageFName = isValidFName ? "Your full name is required." : "";
 
-  const [phone, setPhone] = useState("");
+  const [phone, setPhone] = useState("971");
   const isValidPhone = phone == "";
   const errorMessagePhone = isValidPhone ? "Your phone is required." : "";
 
@@ -215,7 +215,7 @@ const AddClientScreen = ({ navigation }) => {
             onPress={() => navigation.navigate("LandingPage")}
             underlayColor="#fff"
           >
-            <Text style={styles.loginText}>Subscribe</Text>
+            <Text style={styles.loginText}>Add Client</Text>
           </TouchableOpacity>
 
           <TouchableOpacity

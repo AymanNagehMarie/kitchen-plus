@@ -23,6 +23,7 @@ import { Text, Input, ThemeProvider, colors } from "react-native-elements";
 import Icon from "react-native-vector-icons/FontAwesome";
 import Theme from "../constants/Theme";
 import Style from "../constants/Style";
+import { users } from "../data/dataArrays";
 
 const LoginScreen = ({ errorMessage, onSubmit, navigation }) => {
   const [email, setEmail] = useState("");
@@ -34,7 +35,7 @@ const LoginScreen = ({ errorMessage, onSubmit, navigation }) => {
   const errorMessagePassword = isValidPassword
     ? "Your password is required."
     : "";
-  navigation.navigate("LoginScreen");
+
   return (
     <KeyboardAvoidingView
       behavior={Platform.OS === "ios" ? "padding" : "height"}
@@ -107,13 +108,25 @@ const LoginScreen = ({ errorMessage, onSubmit, navigation }) => {
             >
               <TouchableOpacity
                 style={styles.loginScreenButton}
-                onPress={() => navigation.navigate("LandingPage")}
+                onPress={() => {
+                  if (email == "client") {
+                    navigation.navigate("drawerStack", { userType: "client" });
+                  } else if (email == "sales") {
+                    navigation.navigate("drawerStack", { userType: "sales" });
+                  } else if (email == "delivery") {
+                    navigation.navigate("drawerStack", {
+                      userType: "delivery",
+                    });
+                  }
+                }}
                 underlayColor="#fff"
               >
                 <Text style={styles.loginText}>Login</Text>
               </TouchableOpacity>
               <TouchableOpacity
-                onPress={() => navigation.navigate("SubscribeScreen")}
+                onPress={() => {
+                  navigation.navigate("SubscribeScreen");
+                }}
                 underlayColor="red"
               >
                 <Text style={styles.subscribeText}>
@@ -128,9 +141,7 @@ const LoginScreen = ({ errorMessage, onSubmit, navigation }) => {
     </KeyboardAvoidingView>
   );
 };
-//{errorMessage ? (
-//<Text style={styles.errorMessage}>{errorMessage}</Text>
-//) : null}
+
 const styles = StyleSheet.create({
   container: {
     flex: 1,

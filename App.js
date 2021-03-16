@@ -470,6 +470,8 @@ const drawerStack = ({ route }) => {
 
             {/* code clock for client */}
             {route.params.userType === "client" ? (
+              //(props.navigation.closeDrawer(),
+
               <DrawerItem
                 icon={({ color, size }) => (
                   <AntDesign name="logout" color={color} size={size} />
@@ -607,12 +609,13 @@ const App = () => {
   return (
     <NavigationContainer>
       <Stack.Navigator screenOptions={{ headerShown: false }}>
+        <Stack.Screen name="LoginScreen" component={loginScreenStack} />
         <Stack.Screen name="LandingPage" component={LandingPage} />
         <Stack.Screen
           name="DeliveryOrderDetailScreen"
           component={deliveryOrderDetailStack}
         />
-        <Stack.Screen name="LoginScreen" component={loginScreenStack} />
+
         <Stack.Screen name="SubscribeScreen" component={subscribeScreenStack} />
         <Stack.Screen
           name="OrderDetailScreen"
