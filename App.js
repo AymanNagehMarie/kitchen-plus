@@ -46,6 +46,8 @@ import ProductScreen from "./src/screens/ProductScreen";
 import ProfileScreen from "./src/screens/ProfileScreen";
 import SalesOrderHistoryScreen from "./src/screens/SalesOrderHistoryScreen";
 import SubscribeScreen from "./src/screens/SubscribeScreen";
+import ItemDetailScreen from "./src/screens/ItemDetailScreen";
+
 import HomeScreen from "./src/screens/HomeScreen";
 import Header from "./src/components/Header";
 import { withTheme } from "react-native-elements";
@@ -375,6 +377,40 @@ const subscribeScreenStack = ({ navigation }) => {
   );
 };
 
+
+const ItemDetailScreenStack = ({ navigation }) => {
+  return (
+    <Stack.Navigator
+      screenOptions={{
+        // headerLeft: () => (
+        //   <NavigationDrawerStructure navigationProps={navigation} />
+        // ),
+        headerStyle: {
+          
+          // backgroundColor: "#f4511e", //Set Header color
+          backgroundColor: Theme.COLORS.HEADER, //Set Header color
+        },
+        headerTintColor: Theme.COLORS.MAJOR, //Set Header text color
+        headerTitleStyle: {
+          fontWeight: "bold", //Set Header text style
+          textAlign: "center", //Set Header text style
+   
+
+
+        },
+      }}
+    >
+      <Stack.Screen
+        name="ItemDetailScreen"
+        component={ItemDetailScreen}
+        options={{
+          title: "Item Details", //Set Header Title
+        }}
+      />
+    </Stack.Navigator>
+  );
+};
+
 const orderDetailScreenStack = ({ navigation }) => {
   return (
     <Stack.Navigator
@@ -654,6 +690,13 @@ const App = () => {
         <Stack.Screen
           name="OrderDetailScreen"
           component={orderDetailScreenStack}
+        />
+
+<Stack.Screen
+          name="ItemDetailScreen"
+          component={ItemDetailScreenStack}
+          initialParams={{ title: "default" }}
+
         />
 
         <Stack.Screen name="drawerStack" component={drawerStack} />

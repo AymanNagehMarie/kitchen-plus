@@ -4,6 +4,7 @@ import { cartItems } from '../data/dataArrays';
 import CellItem from "../components/CellCartItem"
 import Theme from "../constants/Theme";
 const CartItemScreen = ({ navigation, route }) => {
+  
   return (
     <SafeAreaView style={{ flex: 1 }}>
        <View  style={styles.container}>
@@ -17,7 +18,7 @@ const CartItemScreen = ({ navigation, route }) => {
           data={cartItems}
           renderItem={({ item }) => {
             return (
-              <TouchableHighlight  underlayColor='rgba(73,182,77,0.9)'/* onPress={() => this.onPressRecipe(item)}*/>
+              <TouchableHighlight  underlayColor={Theme.COLORS.MAJOR}/* onPress={() => this.onPressRecipe(item)}*/>
   <CellItem  title={item.title} price={item.price} unit={item.unit} photo_url={item.photo_url}  onIncrease={()=> console.log("+"+item.title)}
   onDecrease={()=> console.log("-"+item.title)}
 ></CellItem>   

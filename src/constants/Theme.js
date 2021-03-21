@@ -3,7 +3,7 @@ export default {
     HEADER: "#fff",
     MAJOR: "#7bb719",
     PLACEHOLDER: "#C0C0C0",
-
+    PARAGRAPH:"#8e8e8e",
     DEFAULT: "#172B4D",
     PRIMARY: "#5E72E4",
     SECONDARY: "#F7FAFC",

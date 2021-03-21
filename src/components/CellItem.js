@@ -142,7 +142,8 @@ const CellItem = (props) => {
   );
   return (
     <View style={styles.container}>
-      <Image style={RecipeCard.photo} source={{ uri: props.photo_url }} />
+      <Image style={RecipeCard.photo} source={{ uri: props.photo_url }}                 resizeMethod={"resize"}
+                resizeMode={"cover"} />
       <View style={{ flexDirection: "row" }}>
         <Text numberOfLines={1} style={styles.titleText}>
           {props.title}

@@ -156,8 +156,17 @@ const ProductScreen = ({ navigation, route }) => {
           renderItem={({ item }) => {
             return (
               <TouchableHighlight
-                underlayColor="rgba(73,182,77,0.9)" /* onPress={() => this.onPressRecipe(item)}*/
+                underlayColor={Theme.COLORS.MAJOR}  onPress={() => 
+                //  navigation.navigate("ItemDetailScreen", params: { user: 'jane' } )
+                  navigation.navigate('ItemDetailScreen', {
+                    screen: 'ItemDetailScreen',
+                    params: {DetailItem:item },
+                  })
+                //  navigation.navigate("CartItemScreen",{title:555555})
+
+                }
               >
+
                 <CellItem
                   title={item.title}
                   price={item.price}
