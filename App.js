@@ -70,10 +70,14 @@ const NavigationDrawerStructure = (props) => {
       </View>
       <View style={{ marginHorizontal: 1, flexDirection: "row" }}>
         <TouchableOpacity onPress={toggleDrawer}>
-          <MaterialCommunityIcons
+          {/* <MaterialCommunityIcons
             name="fruit-cherries"
             size={40}
             color="orange"
+          /> */}
+          <Image
+            source={require("../../assets/logo.png")}
+            style={{ height: "20%", width: "20%" }}
           />
         </TouchableOpacity>
       </View>

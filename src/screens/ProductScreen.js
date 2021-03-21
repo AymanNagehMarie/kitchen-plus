@@ -7,6 +7,7 @@ import {
   TouchableOpacity,
   Image,
   Text,
+  ScrollView,
 } from "react-native";
 import React, { useState } from "react";
 import { recipes } from "../data/dataArrays";
@@ -110,21 +111,41 @@ const ProductScreen = ({ navigation, route }) => {
         alignContent: "center",
       }}
     >
-      <SliderBox
-        images={images}
-        sliderBoxHeight={250}
-        onCurrentImagePressed={(index) => console.log(`image ${index} pressed`)}
-        dotColor={Theme.COLORS.MAJOR}
-        inactiveDotColor="#90A4AE"
-        paginationBoxVerticalPadding={20}
-        autoplay={true}
-        circleLoop
-        autoplayInterval={5000}
-        resizeMethod={"resize"}
-        resizeMode={"stretch"}
-      />
+      {/* <ScrollView> */}
+
       <View style={styles.container}>
         <FlatList
+          ListHeaderComponent={
+            <View>
+              <SliderBox
+                images={images}
+                sliderBoxHeight={220}
+                onCurrentImagePressed={(index) =>
+                  console.log(`image ${index} pressed`)
+                }
+                dotColor={Theme.COLORS.MAJOR}
+                inactiveDotColor="#90A4AE"
+                paginationBoxVerticalPadding={20}
+                autoplay={true}
+                circleLoop
+                autoplayInterval={5000}
+                resizeMethod={"resize"}
+                resizeMode={"stretch"}
+              />
+              <Text
+                style={{
+                  fontSize: 20,
+
+                  color: "red",
+                  alignSelf: "center",
+                  marginVertical: 10,
+                  fontWeight: "bold",
+                }}
+              >
+                Vegetables & Fruits{" "}
+              </Text>
+            </View>
+          }
           vertical
           showsHorizontalScrollIndicator={true}
           scrollToOverflowEnabled={false}
@@ -151,6 +172,7 @@ const ProductScreen = ({ navigation, route }) => {
           keyExtractor={(item) => `${item.recipeId}`}
         />
       </View>
+      {/* </ScrollView> */}
     </SafeAreaView>
   );
 };
@@ -162,7 +184,7 @@ const styles = StyleSheet.create({
 
     alignItems: "center",
     justifyContent: "center",
-    marginVertical: 40,
+    marginVertical: 0,
   },
 });
 export default ProductScreen;
