@@ -63,7 +63,7 @@ const NavigationDrawerStructure = (props) => {
 
   return (
     <View style={{ marginHorizontal: 0, flexDirection: "row" }}>
-      <View style={{ marginHorizontal: 0, flexDirection: "row" }}>
+      <View style={{ marginHorizontal: 0, flexDirection: "row" ,alignItems:"center",alignContent:"center"}}>
         <TouchableOpacity onPress={toggleDrawer}>
           <Feather name="menu" size={40} color={Theme.COLORS.MAJOR} />
         </TouchableOpacity>
@@ -75,10 +75,16 @@ const NavigationDrawerStructure = (props) => {
             size={40}
             color="orange"
           /> */}
-          <Image
-            source={require("../../assets/logo.png")}
+
+
+<Image
+        source={require("./assets/header.png")}
+        style={{ height: 60, width: 60 ,marginBottom:6}}
+      />
+          {/* <Image
+            source={require("./assets/logo.png")}
             style={{ height: "20%", width: "20%" }}
-          />
+          /> */}
         </TouchableOpacity>
       </View>
     </View>
