@@ -7,7 +7,7 @@ import marker from "../../assets/icons8-marker.png";
 export default class Map extends React.Component {
   constructor(props) {
     super(props);
-    // console.log(props);
+    console.log(props);
     this.state = {
       latitude: props.latitude,
       longitude: props.longitude,
@@ -32,6 +32,13 @@ export default class Map extends React.Component {
     try {
       let { status } = await Location.requestPermissionsAsync();
       if (status !== "granted") {
+        console.log(status);
+        this.setState({
+          ...this.state,
+          latitude: 25.1916159002,
+          longitude: 55.2711322488,
+        });
+
         return;
       }
       let location = await Location.getCurrentPositionAsync({});
@@ -42,7 +49,7 @@ export default class Map extends React.Component {
   }
 
   onRegionChangeComplete = (region) => {
-    console.log(region);
+    // console.log(region);
     this.setState({
       ...this.state,
       latitude: region.latitude,

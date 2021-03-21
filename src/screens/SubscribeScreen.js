@@ -126,28 +126,6 @@ const SubscribeScreen = ({ navigation }) => {
           />
           <Spacer />
           <Input
-            label="Please enter your address"
-            labelStyle={{
-              color: Theme.COLORS.MAJOR,
-              fontSize: 18,
-              fontWeight: "normal",
-            }}
-            value={address}
-            onChangeText={setAddress}
-            autoCapitalize="none"
-            autoCorrect={false}
-            placeholder="Address "
-            style={styles.InputStyle}
-            placeholderTextColor={Theme.COLORS.PLACEHOLDER}
-            errorStyle={{ color: "red", fontSize: 18 }}
-            errorMessage={errorMessageAddress}
-            leftIcon={
-              <Entypo name="address" size={24} color={Theme.COLORS.MAJOR} />
-            }
-            textContentType="fullStreetAddress"
-          />
-          <Spacer />
-          <Input
             label="Enter your your email"
             labelStyle={{
               color: Theme.COLORS.MAJOR,
@@ -220,6 +198,28 @@ const SubscribeScreen = ({ navigation }) => {
             textContentType="newPassword"
           />
           <Spacer />
+          <Input
+            label="Please enter your address"
+            labelStyle={{
+              color: Theme.COLORS.MAJOR,
+              fontSize: 18,
+              fontWeight: "normal",
+            }}
+            value={address}
+            onChangeText={setAddress}
+            autoCapitalize="none"
+            autoCorrect={false}
+            placeholder="Address "
+            style={styles.InputStyle}
+            placeholderTextColor={Theme.COLORS.PLACEHOLDER}
+            errorStyle={{ color: "red", fontSize: 18 }}
+            errorMessage={errorMessageAddress}
+            leftIcon={
+              <Entypo name="address" size={24} color={Theme.COLORS.MAJOR} />
+            }
+            textContentType="fullStreetAddress"
+          />
+          <Spacer />
           <View
             style={{
               borderBottomColor: "black",
@@ -236,7 +236,12 @@ const SubscribeScreen = ({ navigation }) => {
             longitude={longitude}
             getLatLon={getLatLon}
           />
-          <Text>{latitude + " " + longitude}</Text>
+          {latitude && longitude ? (
+            <View style={{ flex: 1, flexDirection: "column" }}>
+              <Text>{"Lat: " + latitude}</Text>
+              <Text>{"Lng: " + longitude}</Text>
+            </View>
+          ) : null}
           <Spacer />
           <TouchableOpacity
             style={styles.loginScreenButton}
