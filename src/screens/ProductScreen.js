@@ -13,8 +13,29 @@ import { recipes } from "../data/dataArrays";
 import CellItem from "../components/CellItem";
 import Theme from "../constants/Theme";
 import { MaterialCommunityIcons, AntDesign } from "@expo/vector-icons";
+import { SliderBox } from "react-native-image-slider-box";
 const ProductScreen = ({ navigation, route }) => {
   const [cartCount, setCartCount] = useState(0);
+  const [images, setImages] = useState([
+    //"https://www.texanerin.com/content/uploads/2018/11/pumpkin-spice-cookies-4-650x975.jpg",
+    //"https://source.unsplash.com/1024x768/?water",
+    //"https://source.unsplash.com/1024x768/?girl",
+    //"https://source.unsplash.com/1024x768/?tree", // Network image
+    require("../../assets/sliderImages/panner1.jpg"), // Local image
+    require("../../assets/sliderImages/panner2.jpg"),
+    require("../../assets/sliderImages/panner3.jpg"),
+    require("../../assets/sliderImages/panner4.jpg"),
+    require("../../assets/sliderImages/panner5.jpg"),
+  ]);
+  // setInterval(function () {
+  //   setImages([
+  //     "https://source.unsplash.com/1024x768/?nature",
+  //     "https://source.unsplash.com/1024x768/?water",
+  //     "https://source.unsplash.com/1024x768/?girl",
+  //     "https://source.unsplash.com/1024x768/?tree",
+  //   ]);
+  // }, 1000);
+
   const updateCart = (number) => {
     setCartCount(cartCount + number);
   };
@@ -83,7 +104,25 @@ const ProductScreen = ({ navigation, route }) => {
     });
   }, 500);
   return (
-    <SafeAreaView style={{ flex: 1 }}>
+    <SafeAreaView
+      style={{
+        flex: 1,
+        alignContent: "center",
+      }}
+    >
+      <SliderBox
+        images={images}
+        sliderBoxHeight={250}
+        onCurrentImagePressed={(index) => console.log(`image ${index} pressed`)}
+        dotColor={Theme.COLORS.MAJOR}
+        inactiveDotColor="#90A4AE"
+        paginationBoxVerticalPadding={20}
+        autoplay={true}
+        circleLoop
+        autoplayInterval={5000}
+        resizeMethod={"resize"}
+        resizeMode={"stretch"}
+      />
       <View style={styles.container}>
         <FlatList
           vertical
@@ -118,10 +157,12 @@ const ProductScreen = ({ navigation, route }) => {
 
 const styles = StyleSheet.create({
   container: {
-    margin: 10,
     flex: 1,
-    alignContent: "space-between",
-    justifyContent: "flex-start",
+    alignContent: "center",
+
+    alignItems: "center",
+    justifyContent: "center",
+    marginVertical: 40,
   },
 });
 export default ProductScreen;

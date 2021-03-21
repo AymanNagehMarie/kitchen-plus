@@ -173,11 +173,13 @@ const styles = StyleSheet.create({
     color: Theme.COLORS.MAJOR,
   },
   container: {
-    margin: 10,
     flex: 1,
     alignContent: "space-between",
     //alignItems:"center",
     justifyContent: "flex-start",
+    alignContent: "center",
+
+    margin: 5,
   },
   fixToText: {
     //alignItems: "center",
