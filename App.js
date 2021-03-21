@@ -47,6 +47,7 @@ import ProfileScreen from "./src/screens/ProfileScreen";
 import SalesOrderHistoryScreen from "./src/screens/SalesOrderHistoryScreen";
 import SubscribeScreen from "./src/screens/SubscribeScreen";
 import ItemDetailScreen from "./src/screens/ItemDetailScreen";
+import SearchScreen from "./src/screens/Search/SearchScreen";
 
 import HomeScreen from "./src/screens/HomeScreen";
 import Header from "./src/components/Header";
@@ -377,6 +378,41 @@ const subscribeScreenStack = ({ navigation }) => {
   );
 };
 
+const SearchScreenStack = ({ navigation }) => {
+  return (
+    <Stack.Navigator
+      screenOptions={{
+        // headerLeft: () => (
+        //   <NavigationDrawerStructure navigationProps={navigation} />
+        // ),
+        headerStyle: {
+          
+          // backgroundColor: "#f4511e", //Set Header color
+          backgroundColor: Theme.COLORS.HEADER, //Set Header color
+        },
+        headerTintColor: Theme.COLORS.MAJOR, //Set Header text color
+        headerTitleStyle: {
+          fontWeight: "bold", //Set Header text style
+          textAlign: "center", //Set Header text style
+   
+
+
+        },
+      }}
+    >
+      <Stack.Screen
+        name="SearchScreen"
+        component={SearchScreen}
+        options={{
+          title: "Search", //Set Header Title
+        }}
+      />
+    </Stack.Navigator>
+  );
+};
+
+
+
 
 const ItemDetailScreenStack = ({ navigation }) => {
   return (
@@ -698,6 +734,18 @@ const App = () => {
           initialParams={{ title: "default" }}
 
         />
+
+
+
+<Stack.Screen
+          name="SearchScreen"
+          component={SearchScreenStack}
+          initialParams={{ title: "default" }}
+
+        />
+
+
+
 
         <Stack.Screen name="drawerStack" component={drawerStack} />
       </Stack.Navigator>

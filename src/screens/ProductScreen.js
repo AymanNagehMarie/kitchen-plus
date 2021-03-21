@@ -9,7 +9,11 @@ import {
   Text,
   ScrollView,
 } from "react-native";
+import { Feather } from '@expo/vector-icons'; 
+
 import React, { useState } from "react";
+import { EvilIcons } from '@expo/vector-icons'; 
+
 import { recipes } from "../data/dataArrays";
 import CellItem from "../components/CellItem";
 import Theme from "../constants/Theme";
@@ -45,7 +49,8 @@ const ProductScreen = ({ navigation, route }) => {
       title: "Products", //Set Header Title
       headerRight: () => (
         <View style={{ flexDirection: "row", margin: 5 }} underlayColor="#fff">
-          <View style={{ position: "absolute", zIndex: 2 }}>
+          
+          <View style={{ position: "absolute", zIndex: 2}}>
             <TouchableOpacity
               style={{
                 width: 15,
@@ -90,6 +95,13 @@ const ProductScreen = ({ navigation, route }) => {
               navigation.navigate("CartItemScreen");
             }}
           />
+
+          <AntDesign name="search1" size={35}   color={Theme.COLORS.MAJOR}
+            onPress={() => {
+              navigation.navigate("SearchScreen");
+            }} />
+      
+
         </View>
       ),
 

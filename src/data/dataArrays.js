@@ -60,7 +60,7 @@ export const recipes = [
   {
     price: 50,
     unit: "KG",
-    recipeId: 3,
+    recipeId: 33,
     categoryId: 4,
     title: "Triple Berry Smoothie",
     photo_url:
