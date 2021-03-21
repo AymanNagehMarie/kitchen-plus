@@ -1,4 +1,4 @@
-import React, { useState, useRef } from "react";
+import React, { useState, useRef, useEffect } from "react";
 import Icon from "react-native-vector-icons/FontAwesome";
 import {
   Ionicons,
@@ -22,6 +22,7 @@ import { Input, Text } from "react-native-elements";
 import Spacer from "../components/Spacer";
 import Theme from "../constants/Theme";
 import Style from "../constants/Style";
+import Map from "../components/Map";
 
 const SubscribeScreen = ({ navigation }) => {
   const [fName, setfName] = useState("");
@@ -51,11 +52,22 @@ const SubscribeScreen = ({ navigation }) => {
   const errorMessageConfirm = isValidConfirm
     ? "Your confirm password is required."
     : "";
+  // testes data festival city (25.215154718267243   ,55.362031403928995)
+  const [latitude, setLatitude] = useState(null);
+  const [longitude, setLongitude] = useState(null);
+  const getLatLon = (latitude, longitude) => {
+    setLatitude(latitude);
+    setLongitude(longitude);
+  };
 
   return (
     <KeyboardAvoidingView
       behavior={Platform.OS === "ios" ? "padding" : "height"}
-      style={{ flex: 1, backgroundColor: Theme.COLORS.HEADER }}
+      style={{
+        flex: 1,
+        backgroundColor: Theme.COLORS.HEADER,
+        marginBottom: -50,
+      }}
     >
       {/* onPress={Keyboard.dismiss} */}
       <TouchableWithoutFeedback>
@@ -88,7 +100,6 @@ const SubscribeScreen = ({ navigation }) => {
             textContentType="name"
           />
           <Spacer />
-
           <Input
             label="please enter your phone"
             labelStyle={{
@@ -208,7 +219,24 @@ const SubscribeScreen = ({ navigation }) => {
             }
             textContentType="newPassword"
           />
-
+          <Spacer />
+          <View
+            style={{
+              borderBottomColor: "black",
+              borderBottomWidth: 1,
+            }}
+          />
+          <Spacer />
+          <Text style={{ color: Theme.COLORS.MAJOR }}>
+            Please Move Marker to your location
+          </Text>
+          <Spacer />
+          <Map
+            latitude={latitude}
+            longitude={longitude}
+            getLatLon={getLatLon}
+          />
+          <Text>{latitude + " " + longitude}</Text>
           <Spacer />
           <TouchableOpacity
             style={styles.loginScreenButton}
@@ -217,7 +245,6 @@ const SubscribeScreen = ({ navigation }) => {
           >
             <Text style={styles.loginText}>Subscribe</Text>
           </TouchableOpacity>
-
           <TouchableOpacity
             onPress={() => navigation.navigate("LoginScreen")}
             underlayColor="red"
