@@ -13,7 +13,7 @@ import React, { useState } from "react";
 import Theme from "../../src/constants/Theme";
 
 const CellItem = (props) => {
-  console.log(props);
+  //console.log(props);
   const [counter, setCounter] = useState(1);
   const [flag, setFlag] = useState(true);
   //const [dynamicView, setDynamicView] = useState(

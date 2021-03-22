@@ -73,21 +73,10 @@ const NavigationDrawerStructure = (props) => {
       </View>
       <View style={{ marginHorizontal: 1, flexDirection: "row" }}>
         <TouchableOpacity onPress={toggleDrawer}>
-          {/* <MaterialCommunityIcons
-            name="fruit-cherries"
-            size={40}
-            color="orange"
-          /> */}
-
-
 <Image
         source={require("./assets/header.png")}
-        style={{ height: 60, width: 60 ,marginBottom:6}}
+        style={{ height: 40, width: 40 ,marginBottom:6}}
       />
-          {/* <Image
-            source={require("./assets/logo.png")}
-            style={{ height: "20%", width: "20%" }}
-          /> */}
         </TouchableOpacity>
       </View>
     </View>
@@ -107,58 +96,34 @@ const productScreenStack = ({ navigation, route }) => {
           headerLeft: () => (
             <NavigationDrawerStructure navigationProps={navigation} />
           ),
-          headerRight: () => (
-            <View
-              style={{ flexDirection: "row", margin: 5 }}
-              underlayColor="#fff"
-            >
-              <View style={{ position: "absolute", zIndex: 2 }}>
-                <TouchableOpacity
-                  style={{
-                    width: 15,
-                    height: 15,
-                    alignItems: "center",
-                    opacity: 1,
-                    shadowOpacity: "red",
-                    backgroundColor: "white",
-                    justifyContent: "center",
-                    borderTopLeftRadius: 25,
-                    borderBottomLeftRadius: 25,
-                    borderTopRightRadius: 25,
-                    borderBottomRightRadius: 25,
-                  }}
-                  underlayColor="#fff"
-                >
-                  <TouchableOpacity
-                    style={{
-                      width: 25,
-                      height: 25,
-                      alignItems: "center",
-                      opacity: 1,
-                      shadowOpacity: "red",
-                      backgroundColor: "red",
-                      justifyContent: "center",
-                      borderTopLeftRadius: 25,
-                      borderBottomLeftRadius: 25,
-                      borderTopRightRadius: 25,
-                      borderBottomRightRadius: 25,
-                    }}
-                    underlayColor="#fff"
-                  >
-                    <Text>12</Text>
-                  </TouchableOpacity>
-                </TouchableOpacity>
-              </View>
-              <AntDesign
-                name="shoppingcart"
-                size={40}
-                color={Theme.COLORS.MAJOR}
-                onPress={() => {
-                  navigation.navigate("CartItemScreen");
-                }}
-              />
-            </View>
-          ),
+          // headerRight: () => (
+          //   <View
+          //     style={{ flexDirection: "row", margin: 5 }}
+          //     underlayColor="#fff"
+          //   >
+          //     <View style={{ position: "absolute", zIndex: 2 }}>
+          //       <TouchableOpacity
+          //         style={{
+          //           width: 15,
+          //           height: 15,
+          //           alignItems: "center",
+          //           opacity: 1,
+          //           shadowOpacity: "red",
+          //           backgroundColor: "white",
+          //           justifyContent: "center",
+          //           borderTopLeftRadius: 25,
+          //           borderBottomLeftRadius: 25,
+          //           borderTopRightRadius: 25,
+          //           borderBottomRightRadius: 25,
+          //         }}
+          //         underlayColor="#fff"
+          //       >
+          
+          //       </TouchableOpacity>
+          //     </View>
+       
+          //   </View>
+          // ),
 
           headerStyle: {
             // backgroundColor: "#f4511e", //Set Header color
@@ -190,6 +155,8 @@ const cartItemScreenStack = ({ navigation }) => {
         headerTitleStyle: {
           fontWeight: "bold", //Set Header text style
           textAlign: "center", //Set Header text style
+          marginRight:45
+
         },
       }}
     >
@@ -386,7 +353,7 @@ const SearchScreenStack = ({ navigation }) => {
         //   <NavigationDrawerStructure navigationProps={navigation} />
         // ),
         headerStyle: {
-          
+       
           // backgroundColor: "#f4511e", //Set Header color
           backgroundColor: Theme.COLORS.HEADER, //Set Header color
         },
@@ -394,7 +361,7 @@ const SearchScreenStack = ({ navigation }) => {
         headerTitleStyle: {
           fontWeight: "bold", //Set Header text style
           textAlign: "center", //Set Header text style
-   
+   marginRight:45
 
 
         },

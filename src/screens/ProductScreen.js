@@ -69,12 +69,14 @@ const ProductScreen = ({ navigation, route }) => {
             >
               <TouchableOpacity
                 style={{
-                  width: 25,
-                  height: 25,
+                  marginTop:8,
+                  width: 19,
+                  height: 19,
                   alignItems: "center",
                   opacity: 1,
                   shadowOpacity: "red",
-                  backgroundColor: "red",
+                 
+                  backgroundColor: Theme.COLORS.PARAGRAPH,
                   justifyContent: "center",
                   borderTopLeftRadius: 25,
                   borderBottomLeftRadius: 25,
@@ -83,7 +85,7 @@ const ProductScreen = ({ navigation, route }) => {
                 }}
                 underlayColor="#fff"
               >
-                <Text>{cartCount}</Text>
+                <Text style={{ color:Theme.COLORS.BLACK}}>{cartCount}</Text>
               </TouchableOpacity>
             </TouchableOpacity>
           </View>
@@ -106,6 +108,7 @@ const ProductScreen = ({ navigation, route }) => {
       ),
 
       headerStyle: {
+        height:65,
         // backgroundColor: "#f4511e", //Set Header color
         backgroundColor: Theme.COLORS.HEADER, //Set Header color
       },

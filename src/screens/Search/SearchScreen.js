@@ -22,9 +22,7 @@ export default class SearchScreen extends React.Component {
   }
 
     getRecipesByRecipeName(recipeName) {
-      console.log("recipeName>>>"+recipeName)
       if(!recipeName){
-
         this.setState({
           value: null,
           data: null
@@ -64,14 +62,14 @@ export default class SearchScreen extends React.Component {
   };
 
   onPressRecipe = item => {
-    this.props.navigation.navigate('Recipe', { item });
+    this.props.navigation.navigate('ItemDetailScreen', {
+      screen: 'ItemDetailScreen',
+      params: {DetailItem:item },
+    }) 
   };
 
   renderRecipes = ({ item }) => (
-    <TouchableHighlight underlayColor='rgba(73,182,77,0.9)' onPress={() =>    this.props.navigation.navigate('ItemDetailScreen', {
-      screen: 'ItemDetailScreen',
-      params: {DetailItem:item },
-    }) }>
+    <TouchableHighlight underlayColor={Theme.COLORS.MAJOR} onPress={() => this.onPressRecipe(item)}> 
       <View style={{margin:5,alignContent:"space-between",alignItems:"center",flexDirection:"row",paddingBottom:5,marginVertical:2,borderColor:Theme.COLORS.MAJOR,borderBottomWidth:1}}>
       <Image style={{borderBottomRightRadius:25,borderBottomLeftRadius:25,borderTopRightRadius:25,borderTopLeftRadius:25,width:35,height:35}} source={{ uri: item.photo_url }}                 resizeMethod={"resize"}
                 resizeMode={"cover"} />
@@ -101,7 +99,7 @@ export default class SearchScreen extends React.Component {
        <SearchBar
        autoFocus 
      //  lightTheme="{{color:Theme.COLORS.MAJOR}}"
-       placeholderTextColor="white"
+       placeholderTextColor={Theme.COLORS.MAJOR}
      //  containerStyle={{backgroundColor: 'white',borderColor:"white", borderWidth: 0, borderRadius: 0}}
       // containerStyle={{backgroundColor:Theme.COLORS.MAJOR}}
       // underlayColor="red"
